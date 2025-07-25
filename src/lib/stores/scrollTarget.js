@@ -6,3 +6,5 @@ export const scrollTarget = writable({
   projects: null,
   contact: null
 });
+
+export const headerObj = writable(null);

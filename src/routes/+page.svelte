@@ -12,7 +12,7 @@
 
       <div class="image-position">
         <div class="image-container">
-          <img src="" alt="">
+          <img src="src\lib\img\profile.png" alt="">
         </div>
       </div>
 
@@ -106,11 +106,32 @@
   </section>
 
  <section bind:this={about} class="about">
-    <div class="intro"></div>
+    <div class="intro">
+    </div>
   </section>
 
   <section bind:this={projects} class="projects">
-    <div class="intro"></div>
+        <h1 class="example">Projects Made:</h1>
+
+        <div class="buoy project-holder">
+          <img class="left" src="src\lib\img\buoy-snapshot.jpeg" alt="Buoy Snapshot" style="width: 40%; height: auto;">
+
+          <div class="right project-info">
+            <h1>Buoy</h1>
+            <h5>A Project by SLSU Turing Machines (BSCpE III - GF)</h5>
+            <p>Lorem ipsum sit dolor amet.</p>
+          </div>
+        </div>
+
+        <div class="tra project-holder">
+          <img class="left" src="src\lib\img\buoy-snapshot.jpeg" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
+
+          <div class="right project-info">
+            <h1>TypeRush Arena</h1>
+            <h5>A Mobile Development (Android Studio) Project.</h5>
+            <p>Lorem ipsum sit dolor amet.</p>
+          </div>
+        </div>
   </section>
 
   <section bind:this={contact} class="contact">
@@ -120,9 +141,10 @@
 
 <script>
   import { onMount } from 'svelte';
-  import { scrollTarget } from '$lib/stores/scrollTarget.js';
+  import { scrollTarget, headerObj } from '$lib/stores/scrollTarget.js';
   import { tick } from 'svelte';
-  import { animate, text, stagger, createTimeline } from 'animejs';
+  import { animate, text, stagger, createTimeline, onScroll } from 'animejs';
+	import Header from '$lib/Components/Header.svelte';
   let home;
   let about;
   let projects;
@@ -131,8 +153,9 @@
  
   onMount(async () => {
     await tick(); // ensures DOM is updated
+    
     scrollTarget.set({ home, about, projects, contact });
-
+    await tick();
         const elements = [heading1, heading2, heading3, heading4];
 
       const allWords = elements.flatMap(el => text.split(el, {
@@ -145,7 +168,7 @@
       ],
       duration: 750,
       ease: 'out(3)',
-      delay: stagger(100),
+      delay: stagger(300),
       loop: false
     });
 
@@ -188,13 +211,138 @@
     animate('.image-position', {
       translateX: [500, 0],
       duration: 1200,
-      ease: 'cubicBezier(0.21, 0.75, 0.53, 1.4)'
+      ease: 'cubicBezier(0.21, 0.75, 0.53, 1.4)',
+      complete: () => {
+        animate('.image-container img', {
+          translateY: [30, 0],
+          opacity: [0, 1],
+          duration: 1200,
+          delay: 1200,
+          ease: 'cubicBezier(0.21, 0.75, 0.53, 1)'
+        });
+      }
     });
 
+    await tick();
+
+    // Create a reusable function that returns shared animation settings
+    animateProjectBlock({
+    leftSelector: '.buoy .left',
+    rightSelector: '.buoy .right',
+    targetSelector: '.buoy'
+  });
+
+  animateProjectBlock({
+    leftSelector: '.tra .left',
+    rightSelector: '.tra .right',
+    targetSelector: '.tra'
+  });
+
+  function animateProjectBlock({ leftSelector, rightSelector, targetSelector }) {
+  const target = document.querySelector(targetSelector);
+  if (!target) return;
+
+  animate(leftSelector, {
+    translateX: [-200, 0],
+    translateY: [100, 0],
+    duration: 1000,
+    ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+    autoplay: onScroll({
+      target,
+      enter: 'bottom-=0 top',
+      leave: 'top+=700 bottom',
+      sync: 0.25,
+      debug: true
+    })
+  });
+
+  animate(rightSelector, {
+    translateX: [200, 0],
+    translateY: [100, 0],
+    duration: 1000,
+    ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+    autoplay: onScroll({
+      target,
+      enter: 'bottom-=0 top',
+      leave: 'top+=700 bottom',
+      sync: 0.25,
+      debug: true
+    })
+  });
+
+  animate(`${rightSelector} > *`, {
+    translateY: [20, 0],
+    opacity: [0, 1],
+    duration: 1000,
+    delay: stagger(300),
+    ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+    autoplay: onScroll({
+      target,
+      enter: 'center top-=100',
+      leave: 'center top-=99',
+      sync: 0.25,
+      debug: true
+    })
+  });
+}
+
+
+    await tick();
+    animate($headerObj,{
+      width: '100%',
+      marginTop: '0px',
+      borderRadius: '0px',
+      ease: 'easeInOutExpo',
+      autoplay: onScroll({
+        target: '.about',
+        enter: 'bottom-=0 top',
+        leave: 'top+=700 bottom-=700',
+        sync: 0.5,
+        debug: true
+      })
+    })
   });
 </script>
 
 <style>
+
+  .example{
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    color: white;
+    margin-bottom: 50px;
+  }
+
+  .project-holder{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 40px;
+  }
+  .project-info{
+    color: white;
+    font-family: 'Inter', sans-serif;
+    text-align: end;
+  }
+
+  .left {
+    background-color: white;
+    border-radius: 0 20px 0 20px;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Optional shadow */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+  }
+
+  .left:hover{
+    transform: scale(1.1) !important;
+  }
+
   .container{
     display: flex; 
     flex-direction: column; 
@@ -204,7 +352,7 @@
   .main, .about, .projects, .contact {
     width: 100%;
     height: 100dvh;
-    padding: 5%;
+    padding: 3%;
     position: relative;
     overflow: hidden;
   }
@@ -257,7 +405,7 @@
 .image-container {
   width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: #f8fbf8;
   border: 2px solid black;
   border-radius: 50%;
   overflow: hidden;
@@ -266,7 +414,6 @@
 .image-container img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* or 'cover' depending on desired fit */
   display: block;
 }
 

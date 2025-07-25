@@ -1,6 +1,6 @@
 
 
-<div class="header">
+<div bind:this={header} class="header">
     <nav>
         <ul>
             <li><button on:click={() => {scrollTo('home')}}>Home</button></li>
@@ -13,31 +13,34 @@
 
 <script>
     import { onMount } from 'svelte';
-    import { animate, stagger } from 'animejs';
+    import { animate, stagger, onScroll } from 'animejs';
     import { tick } from 'svelte';
-    import { scrollTarget } from '$lib/stores/scrollTarget.js';
+    import { scrollTarget, headerObj } from '$lib/stores/scrollTarget.js';
     import { get } from 'svelte/store';
     let li;
+    let header;
+
+    $: headerObj.set(header);
     async function scrollTo(section) {
         $scrollTarget?.[section]?.scrollIntoView({ behavior: 'smooth' });
+        
     }
 
-    onMount(() => {
+    onMount(async () => {
         li = document.querySelectorAll('.header nav ul li');
-    });
 
-    tick().then(() => {
-        animate(li,{
+        await tick();
+
+         animate(li,{
             opacity: [0, 1],
             translateY: [-20, 0],
             delay: stagger(500),
             duration: 1000,
             ease: 'cubicBezier(0.175, 0.885, 0.32, 1.75)'
         });
+        
+        
     });
-
-
-   
 </script>
 <style>
     .header{
