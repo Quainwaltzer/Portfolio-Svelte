@@ -50,6 +50,7 @@
         width: 60%;
         margin-top: 10px;
         border-radius: 20px;
+        z-index: 100;
     }
 
     .header nav ul {
