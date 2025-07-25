@@ -114,7 +114,7 @@
         <h1 class="example">Projects Made:</h1>
 
         <div class="buoy project-holder">
-          <img class="left" src="src\lib\img\buoy-snapshot.jpeg" alt="Buoy Snapshot" style="width: 40%; height: auto;">
+          <img class="left" on:click={buoyLink} src="src\lib\img\buoy-snapshot.jpeg" alt="Buoy Snapshot" style="width: 40%; height: auto;">
 
           <div class="right project-info">
             <h1>Buoy</h1>
@@ -124,7 +124,7 @@
         </div>
 
         <div class="tra project-holder">
-          <img class="left" src="src\lib\img\buoy-snapshot.jpeg" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
+          <img class="left" on:click={typerushLink} src="src\lib\img\buoy-snapshot.jpeg" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
 
           <div class="right project-info">
             <h1>TypeRush Arena</h1>
@@ -143,20 +143,32 @@
   import { onMount } from 'svelte';
   import { scrollTarget, headerObj } from '$lib/stores/scrollTarget.js';
   import { tick } from 'svelte';
-  import { animate, text, stagger, createTimeline, onScroll } from 'animejs';
+  import { animate, text, stagger, createTimeline, onScroll, svg } from 'animejs';
 	import Header from '$lib/Components/Header.svelte';
+	import { goto } from '$app/navigation';
   let home;
   let about;
   let projects;
   let contact;
   let heading1, heading2, heading3, heading4;
- 
+  
+  function buoyLink(){
+     window.location.href = 'https://buoy.theturingmachines.asia/';
+  }
+
+  function typerushLink(){
+    window.location.href = 'https://github.com/Quainwaltzer/TypeRush-Arena/releases/tag/v0.1.0-alpha';
+  }
+
   onMount(async () => {
     await tick(); // ensures DOM is updated
     
-    scrollTarget.set({ home, about, projects, contact });
-    await tick();
-        const elements = [heading1, heading2, heading3, heading4];
+      scrollTarget.set({ home, about, projects, contact });
+      await tick();
+
+      
+
+      const elements = [heading1, heading2, heading3, heading4];
 
       const allWords = elements.flatMap(el => text.split(el, {
         words: { wrap: 'hidden' }
@@ -242,6 +254,7 @@
   const target = document.querySelector(targetSelector);
   if (!target) return;
 
+
   animate(leftSelector, {
     translateX: [-200, 0],
     translateY: [100, 0],
@@ -286,12 +299,13 @@
   });
 }
 
-
     await tick();
     animate($headerObj,{
       width: '100%',
       marginTop: '0px',
       borderRadius: '0px',
+      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+      backdropFilter: 'blur(10px)',
       ease: 'easeInOutExpo',
       autoplay: onScroll({
         target: '.about',

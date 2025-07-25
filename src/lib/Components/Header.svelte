@@ -44,7 +44,8 @@
 </script>
 <style>
     .header{
-        background-color: #333;
+        background-color: rgba(0, 0, 0, 1); /* semi-transparent */
+  backdrop-filter: blur(0px); /* actual blur effect */
         position: fixed;
         top: 0;
         right: 50%;
