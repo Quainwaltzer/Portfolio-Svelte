@@ -6,7 +6,7 @@
       <div class="info">
         <h3 bind:this={heading1}>Hello, I'm</h3>
         <h1 bind:this={heading2}>Rovie Endigado</h1>
-        <h2 bind:this={heading3}>Web Developer</h2>
+        <h2 bind:this={heading3}>Student Software Developer</h2>
         <p bind:this={heading4}>Welcome to my portfolio! Here you can find my projects and learn more about me</p>
       </div>
 
@@ -102,16 +102,85 @@
       </defs>
     </svg>
 
+    <div class="social-container">
+      <ul class="socmed-list">
+        <li on:click={githubLink} ><i class="fab fa-github"></i></li>
+        <li on:click={linkedinLink}><i class="fab fa-linkedin"></i></li>
+        <li on:click={hackerrankLink}><i class="fab fa-hackerrank"></i></li>
+      </ul>
+    </div>
     
-  </section>
-
- <section bind:this={about} class="about">
-    <div class="intro">
+    <div class="more">
+      <button on:click={gotoAbout} class="goto-about">GO TO ABOUT <span><i class="fas fa-arrow-down" style="color: white;"></i></span></button>
     </div>
   </section>
 
+ <section bind:this={about} class="about">
+  <h1 class="example about-examp"><span class="before about-bef"></span>ABOUT ME</h1>
+    <div class="about-container">
+
+      <h1 style="text-align: center;">School</h1>
+      <div class="school-info">
+        <p bind:this={schoolparagraph}>Hi! I'm Rovie Endigado, a passionate third-year Computer Engineering student at Southern Luzon State University (SLSU).
+            I’m currently focused on expanding my skills in Software Engineering, Web Development, Data Science, 
+            Data Analytics, and UI/UX Design.
+
+            With a strong foundation in both hardware and software, I enjoy building user-centered digital 
+            experiences and working with data to create meaningful insights. Whether it's designing clean 
+            interfaces or writing efficient code, I'm driven by curiosity and a love for problem-solving.
+        </p>
+        
+        <hr>
+
+        <div class="logos">
+          <img src="src\lib\img\slsu-logo.png" alt="" class="school-logo logo1">
+          <img src="src\lib\img\slsu-cen.png" alt="" class="school-logo logo2">
+        </div>
+
+      </div>
+
+      <h1 style="text-align: center;">Work Experience</h1>
+      <div class="intern-info">
+        <div class="images">
+          
+          <Zoom>
+            <img src="src/lib/img/open-it-chatbot.jpeg" alt="" class="imaging-1">
+          </Zoom>
+          
+          <Zoom>
+            <img src="src/lib/img/open-it-visit.jpg" alt="" class="imaging-2">
+          </Zoom>
+        </div>
+        
+        <hr style="margin-left: 10px;" class="second-hr">
+
+        <p>I’m currently working as a Hybrid Data Science and Software Development Intern at Open IT, 
+          where I contribute across the stack—supporting both data analysis and application development. 
+          On the data science side, I assist in reviewing and verifying Python scripts used for 
+          statistical computations, ensuring the accuracy and reliability of results.
+
+          On the software side, I’m actively involved in developing a chatbot system using C#, Blazor, 
+          and ASP.NET Core, where I handle both the front-end UI and backend logic, along with managing 
+          SQL-based database operations. I also integrate Azure OpenAI for advanced function calling, 
+          connecting CLI-based Python tools with C#, and enhancing the chatbot's intelligence with 
+          AI-generated outputs. This role allows me to blend cloud services, AI integration, and 
+          full-stack development in a real-world setting.
+        </p>
+
+      </div>
+
+      <h1 style="text-align: center;">Esports Life!!!</h1>
+
+      <div class="embla" use:emblaCarouselSvelte={{ options, plugins }}>
+        <div class="embla__container">
+         {#each images as img}
+            <div class="embla__slide"><img src={img} alt=""></div>
+         {/each}
+      </div>
+  </section>
+
   <section bind:this={projects} class="projects">
-        <h1 class="example">Projects Made:</h1>
+        <h1 class="example project-examp"><span class="before project-bef"></span>PROJECTS MADE:</h1>
 
         <div class="buoy project-holder">
           <img class="left" on:click={buoyLink} src="src\lib\img\buoy-snapshot.jpeg" alt="Buoy Snapshot" style="width: 40%; height: auto;">
@@ -124,10 +193,20 @@
         </div>
 
         <div class="tra project-holder">
-          <img class="left" on:click={typerushLink} src="src\lib\img\buoy-snapshot.jpeg" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
+          <img class="left" on:click={typerushLink} src="src\lib\img\title.png" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
 
           <div class="right project-info">
             <h1>TypeRush Arena</h1>
+            <h5>A Mobile Development (Android Studio) Project.</h5>
+            <p>Lorem ipsum sit dolor amet.</p>
+          </div>
+        </div>
+
+        <div class="map project-holder">
+          <img class="left" on:click={foliumLink} src="src\lib\img\map-snapshot.jpeg" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
+
+          <div class="right project-info">
+            <h1>Regional Analysis of Internet Connectivity, Literacy Rates, and Teenage Pregnancy</h1>
             <h5>A Mobile Development (Android Studio) Project.</h5>
             <p>Lorem ipsum sit dolor amet.</p>
           </div>
@@ -137,21 +216,47 @@
   <section bind:this={contact} class="contact">
     <div class="intro"></div>
   </section>
+
 </div>
 
 <script>
   import { onMount } from 'svelte';
   import { scrollTarget, headerObj } from '$lib/stores/scrollTarget.js';
   import { tick } from 'svelte';
-  import { animate, text, stagger, createTimeline, onScroll, svg } from 'animejs';
+  import { animate, text, stagger, createTimeline, onScroll, svg, engine } from 'animejs';
 	import Header from '$lib/Components/Header.svelte';
 	import { goto } from '$app/navigation';
+  import { Lightbox } from 'svelte-lightbox';
+  import emblaCarouselSvelte from 'embla-carousel-svelte';
+  import Autoplay from 'embla-carousel-autoplay';
+  import AutoScroll from 'embla-carousel-auto-scroll';
+  
+  import Zoom from 'svelte-medium-image-zoom';
+  import 'svelte-medium-image-zoom/dist/styles.css';
   let home;
   let about;
   let projects;
   let contact;
   let heading1, heading2, heading3, heading4;
-  
+  let lightboxProgrammaticController;
+  let schoolparagraph;
+
+  const images = [
+    'src/lib/img/champion.jpg',
+    'src/lib/img/bois.jpg',
+    'src/lib/img/cen.jpg',
+    'src/lib/img/global.jpg',
+    'src/lib/img/both.jpg'
+  ];
+
+  let options = { loop: true };
+  let plugins = [AutoScroll({stopOnInteraction: false, stopOnFocusIn: false, startDelay: 0})];
+
+  engine.defaults.frameRate = 120;
+
+  function gotoAbout(){
+    $scrollTarget.about.scrollIntoView({behavior: 'smooth'});
+  }
   function buoyLink(){
      window.location.href = 'https://buoy.theturingmachines.asia/';
   }
@@ -160,27 +265,41 @@
     window.location.href = 'https://github.com/Quainwaltzer/TypeRush-Arena/releases/tag/v0.1.0-alpha';
   }
 
+  function foliumLink(){
+    window.location.href = 'https://quainwaltzer.github.io/CPE-Electives-Data-Analytics-/map/Endigado-CPE13-Electives-Folium-Map.html';
+  }
+
+  function githubLink(){
+    window.location.href = 'https://github.com/Quainwaltzer';
+  }
+
+  function linkedinLink(){
+    window.location.href = 'https://www.linkedin.com/in/rovieendigado/';
+  }
+
+  function hackerrankLink(){
+    window.location.href = 'https://www.hackerrank.com/profile/quainwaltzer';
+  }
+
   onMount(async () => {
     await tick(); // ensures DOM is updated
-    
-      scrollTarget.set({ home, about, projects, contact });
-      await tick();
-
       
+    scrollTarget.set({ home, about, projects, contact });
+    await tick();
 
-      const elements = [heading1, heading2, heading3, heading4];
+    const elements = [heading1, heading2, heading3, heading4];
 
-      const allWords = elements.flatMap(el => text.split(el, {
-        words: { wrap: 'hidden' }
-      }).words);
+    const allWords = elements.flatMap(el => text.split(el, {
+      words: { wrap: 'hidden' }
+    }).words);
 
-      animate(allWords, {
+    animate(allWords, {
       y: [
         { to: ['100%', '0%'] }
       ],
       duration: 750,
-      ease: 'out(3)',
-      delay: stagger(300),
+      ease: 'cubicBezier(0.37, -0.09, 0.09, 0.84)',
+      delay: stagger(200),
       loop: false
     });
 
@@ -221,15 +340,20 @@
     await tick();
 
     animate('.image-position', {
-      translateX: [500, 0],
-      duration: 1200,
+      keyframes: {
+        '0%': {x: 500, rotate: 0},
+        '50%': {x: -100, rotate: -15},
+        '100%': {x: 0, rotate: 0}
+      },
+      duration: 2000,
       ease: 'cubicBezier(0.21, 0.75, 0.53, 1.4)',
+      playbackEase: 'ouIn(3)',
       complete: () => {
         animate('.image-container img', {
           translateY: [30, 0],
           opacity: [0, 1],
           duration: 1200,
-          delay: 1200,
+          delay: 2000,
           ease: 'cubicBezier(0.21, 0.75, 0.53, 1)'
         });
       }
@@ -237,69 +361,224 @@
 
     await tick();
 
-    // Create a reusable function that returns shared animation settings
-    animateProjectBlock({
-    leftSelector: '.buoy .left',
-    rightSelector: '.buoy .right',
-    targetSelector: '.buoy'
-  });
-
-  animateProjectBlock({
-    leftSelector: '.tra .left',
-    rightSelector: '.tra .right',
-    targetSelector: '.tra'
-  });
-
-  function animateProjectBlock({ leftSelector, rightSelector, targetSelector }) {
-  const target = document.querySelector(targetSelector);
-  if (!target) return;
-
-
-  animate(leftSelector, {
-    translateX: [-200, 0],
-    translateY: [100, 0],
-    duration: 1000,
-    ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
-    autoplay: onScroll({
-      target,
-      enter: 'bottom-=0 top',
-      leave: 'top+=700 bottom',
-      sync: 0.25,
-      debug: true
-    })
-  });
-
-  animate(rightSelector, {
-    translateX: [200, 0],
-    translateY: [100, 0],
-    duration: 1000,
-    ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
-    autoplay: onScroll({
-      target,
-      enter: 'bottom-=0 top',
-      leave: 'top+=700 bottom',
-      sync: 0.25,
-      debug: true
-    })
-  });
-
-  animate(`${rightSelector} > *`, {
-    translateY: [20, 0],
-    opacity: [0, 1],
-    duration: 1000,
-    delay: stagger(300),
-    ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
-    autoplay: onScroll({
-      target,
-      enter: 'center top-=100',
-      leave: 'center top-=99',
-      sync: 0.25,
-      debug: true
-    })
-  });
-}
+    animate('.socmed-list li', {
+      translateX: [100, 0],
+      duration: 1000,
+      delay: stagger(200, { start: 600} ),
+      ease: 'cubicBezier(0.21, 0.75, 0.53, 1)'
+    });
 
     await tick();
+
+    animateExamples({
+      examples: '.about-examp',
+      targets: '.about-examp',
+      underline: '.about-bef'
+    })
+
+    animateExamples({
+      examples: '.project-examp',
+      targets: '.project-examp',
+      underline: '.project-bef'
+    })
+
+    function animateExamples({examples, targets, underline}){
+        animate(examples, {
+          translateX: [-200, 0],
+          opacity: [0, 1],
+          duration: 1000,
+          ease: 'inOut',
+          autoplay: onScroll({
+            target: targets,
+            enter: "center+=350 top",
+            leave: "center+=310 bottom",
+            sync: 0.25,
+            debug: false
+         })
+       });
+
+       animate(underline, {
+        width: '100%',
+        duration: 2000,
+        ease: 'inOut',
+        autoplay: onScroll({
+          target: targets,
+          enter: "center+=350 top",
+          leave: "center+=310 bottom",
+          sync: 0.10,
+          debug: false
+        })
+      });
+    }
+    
+    await tick();
+
+   const { words } = text.split(schoolparagraph, {
+     words: { wrap: 'clip' },
+    });
+
+    await tick();
+    animate('.school-info > p', {
+      translateX: [-200, 0],
+      opacity: [0, 1],
+      duration: 1000,
+      ease: 'inOut',
+      autoplay: onScroll({
+        target: '.school-info > p',
+        enter: 'bottom-=100 top-=20' ,
+        leave: 'bottom-=150 center-=20',
+        sync: 0.25,
+        debug: false
+      })
+    });
+
+    await tick();
+
+    animate(words,{
+      y: [
+        { to: ['-100%', '0%'] }
+      ],
+      duration: 750,
+      ease: 'inOut',
+      delay: stagger(50),
+      autoplay: onScroll({
+        target: '.school-info > p',
+        enter: 'bottom top+=20' ,
+        leave: 'top center+=20',
+        sync: 'play play resume reset',
+        debug: false
+      })
+    });
+
+    animate('.logo1',{
+      translateY: [-50, 0],
+      opacity: [0, 1],
+      duration: 1000,
+      ease: 'cubicBezier(0.21, 0.75, 0.53, 1)',
+      autoplay: onScroll({
+        enter: 'center+=200 top',
+        leave: 'center+=100 bottom',
+        sync: 0.5,
+        debug: false
+      })
+    });
+
+    animate('.logo2',{
+      translateY: [50, 0],
+      opacity: [0, 1],
+      duration: 1000,
+      ease: 'cubicBezier(0.21, 0.75, 0.53, 1)',
+      autoplay: onScroll({
+        enter: 'center+=200 top',
+        leave: 'center+=100 bottom',
+        sync: 0.5,
+        debug: false
+      })
+    });
+
+    animate('.imaging-1', {
+      translateY: [50, 0],
+      scale: [1, 1.15, 1],
+      opacity: [0, 1],
+      rotate: '-2deg',
+      duration: 2000,
+      ease: 'cubicBezier(0.21, 0.75, 0.53, 1)',
+      playbackEase: 'ouIn(3)',
+      autoplay: onScroll({
+        target: '.images',
+        enter: 'bottom-=100 top',
+        leave: 'bottom-=200 center',
+        sync: 0.5,
+        debug: false
+      })
+    });
+
+    animate('.imaging-2', {
+      translateY: [50, 0],
+      scale: [1, 1.15, 1],
+      opacity: [0, 1],
+      rotate: '2deg',
+      duration: 2000,
+      delay: 1000,
+      ease: 'cubicBezier(0.21, 0.75, 0.53, 1)',
+      playbackEase: 'ouIn(3)',
+      autoplay: onScroll({
+        target: '.images',
+        enter: 'bottom-=100 top',
+        leave: 'bottom-=200 center',
+        sync: 0.5,
+        debug: false
+      })
+    });
+
+    animateProjectBlock({
+      leftSelector: '.buoy .left',
+      rightSelector: '.buoy .right',
+      targetSelector: '.buoy'
+    });
+
+    animateProjectBlock({
+      leftSelector: '.tra .left',
+      rightSelector: '.tra .right',
+      targetSelector: '.tra'
+    });
+
+    animateProjectBlock({
+      leftSelector: '.map .left',
+      rightSelector: '.map .right',
+      targetSelector: '.map'
+    });
+
+    function animateProjectBlock({ leftSelector, rightSelector, targetSelector }) {
+      const target = document.querySelector(targetSelector);
+      if (!target) return;
+
+      animate(leftSelector, {
+        translateX: [-200, 0],
+        translateY: [100, 0],
+        duration: 1000,
+        ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+        autoplay: onScroll({
+          target,
+          enter: 'bottom-=0 top',
+          leave: 'top+=700 bottom',
+          sync: 0.25,
+          debug: false
+        })
+      });
+
+      animate(rightSelector, {
+        translateX: [200, 0],
+        translateY: [100, 0],
+        duration: 1000,
+        ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+        autoplay: onScroll({
+          target,
+          enter: 'bottom-=0 top',
+          leave: 'top+=700 bottom',
+          sync: 0.25,
+          debug: false
+        })
+      });
+
+      animate(`${rightSelector} > *`, {
+        translateY: [20, 0],
+        opacity: [0, 1],
+        duration: 1000,
+        delay: stagger(300),
+        ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+        autoplay: onScroll({
+          target,
+          enter: 'center top-=100',
+          leave: 'center top-=50',
+          sync: 'play resume play reverse',
+          debug: false
+        })
+      });
+    }
+
+    await tick();
+
     animate($headerObj,{
       width: '100%',
       marginTop: '0px',
@@ -312,7 +591,7 @@
         enter: 'bottom-=0 top',
         leave: 'top+=700 bottom-=700',
         sync: 0.5,
-        debug: true
+        debug: false
       })
     })
   });
@@ -324,10 +603,21 @@
     display: block;
     width: fit-content;
     margin: 0 auto;
-    font-family: 'Inter', sans-serif;
-    font-size: 30px;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 50px;
     color: white;
     margin-bottom: 50px;
+  }
+
+  .example .before{
+    content: "";
+    display: block;
+    width: 0%;
+    height: 5px;
+    position: absolute;
+    bottom: 0%;
+    background-color: rgb(252, 105, 0);
   }
 
   .project-holder{
@@ -345,7 +635,7 @@
   }
 
   .left {
-    background-color: white;
+    background-color: black;
     border-radius: 0 20px 0 20px;
     display: inline-block;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Optional shadow */
@@ -366,19 +656,52 @@
   .main, .about, .projects, .contact {
     width: 100%;
     height: 100dvh;
-    padding: 3%;
+    padding: 5%;
     position: relative;
     overflow: hidden;
+    box-shadow: inset 0 -10px 30px -5px rgba(0, 0, 0, 0.5);
   }
 
   .main{
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     display: flex;
     justify-content: flex-start;
     align-items: center;
     font-family: 'Inter', sans-serif;
+    padding-right: 15%;
+    color: white;
+    
+  }
+  
+  .more{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
+  .goto-about{
+    width: 200px;
+    height: 50px;
+    font-family: 'Outfit', sans-serif;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    box-shadow: inset 2px 2px 5px -2px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 5px -2px rgba(255, 255, 255, 0.5);
+    transition: box-shadow 0.5s ease, transform 0.5s ease;
+  }
+
+  .goto-about:hover{
+    box-shadow: inset 2px 2px 5px -2px rgba(0, 0, 0, 0.5),
+    inset -2px -2px 5px -1px rgba(255, 115, 0, 0.7);
+    transform: scale(1.05);
+  }
+
+  i{
+    color: black;
+  }
   svg{
     position:absolute;
     width: 30%;
@@ -390,10 +713,14 @@
 
   .about{
     background: linear-gradient(to right, #6a11cb, #2575fc);
+    font-family: 'Inter', sans-serif;
+    color: white;
+    height: fit-content;
   }
 
   .projects{
     background: linear-gradient(to right, #00c6ff, #0072ff);
+    height: fit-content;
   }
 
   .contact{
@@ -402,6 +729,7 @@
 
   .info h1{
     font-size: 3rem;
+    
   }
 
   .info-container{
@@ -416,19 +744,232 @@
     height: auto;
     aspect-ratio: 1 / 1;
   }
-.image-container {
-  width: 100%;
-  height: 100%;
-  background-color: #f8fbf8;
-  border: 2px solid black;
-  border-radius: 50%;
+
+  .image-container {
+    width: 100%;
+    height: 100%;
+    background-color: #f8fbf8;
+    border: 2px solid black;
+    border-radius: 20px 0 20px 0;
+    overflow: hidden;
+  }
+
+  .image-container::before{
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: 3px solid transparent;
+    border-image: linear-gradient(to right, #ff7e5f, #ff4b2b);
+    border-image-slice: 3;
+    position: absolute; 
+    z-index: -1;
+    bottom: -5%;
+    right: -5%;
+    border-radius: 0 0 20px 0;
+  }
+
+  .image-container::after{
+    content: "";
+    display: block;
+    height: 100%;
+    width: 100%;
+    background: none;
+    border: 3px solid transparent;
+    border-image: linear-gradient(to right, #ff7e5f, #ff4b2b);
+    border-image-slice: 3;
+    position: absolute; 
+    z-index: -1;
+    bottom: -10%;
+    right: -10%;
+    border-radius: 0 0 20px 0;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .about-container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-container > *{
+    margin-bottom: 20px;
+  }
+
+  .school-info, .intern-info{
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .school-info > p, 
+  .school-info > div,
+  .intern-info > p,
+  .intern-info > div
+  {
+    padding: 20px;
+    text-align: justify;
+  }
+
+  .school-logo{
+    width: 100px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .images{
+    height: 270px;
+    width: 800px;
+    position: relative;
+  }
+
+  .intern-info > p{
+    flex-shrink: 2;
+  }
+
+  .imaging-1{
+    position: absolute;
+    filter:grayscale(1);
+    transition: transform 2s cubic-bezier(0.21, 0.75, 0.53, 1), filter 0.5s cubic-bezier(0.21, 0.75, 0.53, 1);
+    width: 90%;
+    max-width: 100%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .imaging-1:hover{
+    transform: rotate(0deg) scale(1.05) !important;
+    filter:grayscale(0);
+  }
+
+
+  .imaging-2{
+    position: absolute;
+    width: 40%;
+    max-width: 100%;
+    height: auto;
+    bottom: 10px;
+    left: -10px;
+    filter:grayscale(1);
+    transition: transform 2s cubic-bezier(0.21, 0.75, 0.53, 1), filter 0.5s cubic-bezier(0.21, 0.75, 0.53, 1);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .imaging-2:hover{
+    transform: rotate(0deg) scale(1.05) !important;
+    filter:grayscale(0);
+  }
+
+  hr{
+    width: 5px;
+    height: 200px;
+    background-color: white;
+  }
+
+  .project-info h1{
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+
+  .social-container{
+    position: absolute;
+    right: 20px;
+  }
+
+  .socmed-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .socmed-list li{
+    list-style: none;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 30px 1px black;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.5s cubic-bezier(0.21, 0.75, 0.53, 1);
+  }
+
+  .socmed-list li:hover{
+    transform: scale(1.2) !important;
+  }
+
+  .embla {
   overflow: hidden;
-}
-
-.image-container img {
   width: 100%;
-  height: 100%;
-  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  box-sizing: border-box;
+  margin-right: 10px;
+}
+
+.embla__slide img {
+  width: auto;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+  /* Media Queries */
+
+  @media (max-width: 767px){
+    .project-info h1{
+      font-size: 20px;
+    }
+
+    .intern-info{
+      flex-direction: column;
+    }
+
+    .second-hr{
+      height: 3px;
+      width: 100%;
+      background-color: white;
+    }
+
+    .images{
+      width: 100%;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .imaging-1{
+      position: static;
+      transform: rotate(0deg);
+      width: 250px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .imaging-2{
+      position: static;
+      transform: rotate(0deg);
+      width: 250px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+  }
 </style>
