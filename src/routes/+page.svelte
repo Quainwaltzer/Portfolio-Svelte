@@ -12,7 +12,7 @@
 
       <div class="image-position">
         <div class="image-container">
-          <img src="src\lib\img\profile.png" alt="">
+          <img src="/img/profile.png" alt="">
         </div>
       </div>
 
@@ -133,8 +133,8 @@
         <hr>
 
         <div class="logos">
-          <img src="src\lib\img\slsu-logo.png" alt="" class="school-logo logo1">
-          <img src="src\lib\img\slsu-cen.png" alt="" class="school-logo logo2">
+          <img src="/img/slsu-logo.png" alt="" class="school-logo logo1">
+          <img src="/img/slsu-cen.png" alt="" class="school-logo logo2">
         </div>
 
       </div>
@@ -144,11 +144,11 @@
         <div class="images">
           
           <Zoom>
-            <img src="src/lib/img/open-it-chatbot.jpeg" alt="" class="imaging-1">
+            <img src="/img/open-it-chatbot.jpeg" alt="" class="imaging-1">
           </Zoom>
           
           <Zoom>
-            <img src="src/lib/img/open-it-visit.jpg" alt="" class="imaging-2">
+            <img src="/img/open-it-visit.jpg" alt="" class="imaging-2">
           </Zoom>
         </div>
         
@@ -183,7 +183,7 @@
         <h1 class="example project-examp"><span class="before project-bef"></span>PROJECTS MADE:</h1>
 
         <div class="buoy project-holder">
-          <img class="left" on:click={buoyLink} src="src\lib\img\buoy-snapshot.jpeg" alt="Buoy Snapshot" style="width: 40%; height: auto;">
+          <img class="left" on:click={buoyLink} src="/img/buoy-snapshot.jpeg" alt="Buoy Snapshot" style="width: 40%; height: auto;">
 
           <div class="right project-info">
             <h1>Buoy</h1>
@@ -193,7 +193,7 @@
         </div>
 
         <div class="tra project-holder">
-          <img class="left" on:click={typerushLink} src="src\lib\img\title.png" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
+          <img class="left" on:click={typerushLink} src="/img/title.png" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
 
           <div class="right project-info">
             <h1>TypeRush Arena</h1>
@@ -203,7 +203,7 @@
         </div>
 
         <div class="map project-holder">
-          <img class="left" on:click={foliumLink} src="src\lib\img\map-snapshot.jpeg" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
+          <img class="left" on:click={foliumLink} src="/img/map-snapshot.jpeg" alt="TypeRush Snapshot" style="width: 40%; height: auto;">
 
           <div class="right project-info">
             <h1>Regional Analysis of Internet Connectivity, Literacy Rates, and Teenage Pregnancy</h1>
@@ -242,11 +242,11 @@
   let schoolparagraph;
 
   const images = [
-    'src/lib/img/champion.jpg',
-    'src/lib/img/bois.jpg',
-    'src/lib/img/cen.jpg',
-    'src/lib/img/global.jpg',
-    'src/lib/img/both.jpg'
+    '/img/champion.jpg',
+    '/img/bois.jpg',
+    '/img/cen.jpg',
+    '/img/global.jpg',
+    '/img/both.jpg'
   ];
 
   let options = { loop: true };
