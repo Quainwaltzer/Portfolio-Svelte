@@ -654,7 +654,7 @@
     justify-content: center;
   }
   .main, .about, .projects, .contact {
-    width: 100%;
+    width: 99vw;
     height: 100dvh;
     padding: 5%;
     position: relative;
