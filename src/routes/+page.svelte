@@ -624,7 +624,34 @@
 </script>
 
 <style>
+.about-examp,
+.project-examp,
+.school-info > p,
+.image-container img,
+.imaging-1,
+.imaging-2,
+.logo1,
+.logo2,
+.socmed-list li,
+.buoy .left,
+.buoy .right,
+.tra .left,
+.tra .right,
+.map .left,
+.map .right,
+.buoy .right > *,
+.tra .right > *,
+.map .right > *,
+.school-info p span,
+.about-bef,
+.project-bef {
+  will-change: transform, opacity;
+}
 
+.about-bef,
+.project-bef {
+  will-change: width;
+}
   .example{
     display: block;
     width: fit-content;
