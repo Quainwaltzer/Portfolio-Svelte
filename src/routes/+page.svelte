@@ -753,14 +753,26 @@
     background: linear-gradient(to right, #ff416c, #ff4b2b);
   }
 
-  .info h1{
-    font-size: 3rem;
-    
+  .info h1 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+  }
+
+  .info h2 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+  }
+
+  .info h3 {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .info p{
+    font-size: clamp(0.75rem, 2vw, 1rem);
   }
 
   .info-container{
     display: flex;
     justify-content: space-between;
+    gap: 2rem;
     align-items: center;
     width: 100%;
   }
@@ -840,6 +852,7 @@
   {
     padding: 20px;
     text-align: justify;
+    font-size: clamp(0.75rem, 2vw, 1rem);
   }
 
   .school-logo{
@@ -974,6 +987,25 @@
       background-color: white;
     }
 
+    .main{
+      padding-right: 5%;
+    }
+
+    .info-container{
+      width: 100vw;
+    }
+
+    .image-position{
+      width: 200px;
+      height: 200px;
+      aspect-ratio: 1/1;
+    }
+
+    .image-container::before,
+    .image-container::after{
+      display: none;
+    }
+
     .images{
       width: 100%;
       display: flex;
@@ -998,6 +1030,10 @@
       height: auto;
       aspect-ratio: 1 / 1;
       object-fit: cover;
+    }
+
+    .info-container{
+      flex-direction: column-reverse;
     }
   }
 
