@@ -1,9 +1,18 @@
-import vercel from '@sveltejs/adapter-vercel';
+import adapter from '@sveltejs/adapter-vercel';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
-export default {
+const config = {
   kit: {
-    adapter: vercel({
-         runtime: 'nodejs20.x'
+    adapter: adapter({
+      runtime: 'nodejs20.x'
     }),
+    alias: {
+      $lib: 'src/lib',
+      $components: 'src/lib/components'
+    }
+    // No need for base path on Vercel
   },
+  preprocess: vitePreprocess()
 };
+
+export default config;
