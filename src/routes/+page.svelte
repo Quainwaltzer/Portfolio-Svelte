@@ -159,8 +159,8 @@
           On the data science side, I assist in reviewing and verifying Python scripts used for 
           statistical computations, ensuring the accuracy and reliability of results.
 
-          On the software side, I’m actively involved in developing a chatbot system using C#, Blazor, 
-          and ASP.NET Core, where I handle both the front-end UI and backend logic, along with managing 
+          On the software side, I’m actively involved in developing a chatbot system using <strong>C#, Blazor, 
+          and ASP.NET Core</strong>, where I handle both the front-end UI and backend logic, along with managing 
           SQL-based database operations. I also integrate Azure OpenAI for advanced function calling, 
           connecting CLI-based Python tools with C#, and enhancing the chatbot's intelligence with 
           AI-generated outputs. This role allows me to blend cloud services, AI integration, and 
@@ -170,13 +170,38 @@
       </div>
 
       <h1 style="text-align: center;">Esports Life!!!</h1>
+        <div class="esports-info">
+            <div class="embla" use:emblaCarouselSvelte={{ options, plugins }}>
+              <div class="embla__container">
+              {#each images as img}
+                  <div class="embla__slide">
+                    <Zoom>
+                      <img src={img} alt="Esports Images">
+                    </Zoom>
+                  </div>
+              {/each}
+              </div>
+            </div>
 
-      <div class="embla" use:emblaCarouselSvelte={{ options, plugins }}>
-        <div class="embla__container">
-         {#each images as img}
-            <div class="embla__slide"><img src={img} alt=""></div>
-         {/each}
-      </div>
+            <hr style="height: 3px; width: 50%; margin: 10px auto;">
+
+            <p>Outside the world of code and circuits, I’ve also thrived in the competitive esports scene. 
+              As a varsity Mobile Legends player for SLSU, I had the incredible opportunity to represent 
+              our university in the Philippine Collegiate Championship, where our team fought hard and 
+              proudly secured Top 3 in Luzon and placed among the Top 16 nationwide. I played the role 
+              of Jungler, leading strategic plays and adapting on the fly in high-pressure matches. I 
+              also helped bring home the gold for the College of Engineering in the Inter-Collegiate & 
+              Campuses Athletics Competition (ICCAC), where we claimed the championship title. These 
+              experiences sharpened my decision-making, strategic thinking, and communication under 
+              pressure—skills I proudly carry into every project and team I work with.
+              <br><br>
+              I also climbed the Mobile Legends national and global leaderboards, peaking as <strong>Top 2 
+              Gusion (PH)</strong> and <strong>Top 23 Gusion (Global)</strong>, along with <strong>Top 24 Lancelot (PH)</strong>, Top 9 Ling (PH), 
+              <strong>Top 10 Kimmy (PH)</strong>, and <strong>Top 48 Fredrinn (PH)</strong>. Competing at this level taught me focus, 
+              consistency, and how to stay calm under pressure—all valuable traits in both esports 
+              and engineering.</p>
+        </div>
+    </div>
   </section>
 
   <section bind:this={projects} class="projects">
@@ -246,7 +271,8 @@
     '/img/bois.jpg',
     '/img/cen.jpg',
     '/img/global.jpg',
-    '/img/both.jpg'
+    '/img/both.jpg',
+    '/img/lancelot.jpg'
   ];
 
   let options = { loop: true };
@@ -591,7 +617,7 @@
         enter: 'bottom-=0 top',
         leave: 'top+=700 bottom-=700',
         sync: 0.5,
-        debug: false
+        debug: true
       })
     })
   });
@@ -926,9 +952,11 @@
   width: auto;
   height: 300px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 10px 0 10px 0;
+  background: linear-gradient(to right, #ffffff, #d8d2d1);
+  padding: 10px;
 }
-
+  
   /* Media Queries */
 
   @media (max-width: 767px){
@@ -971,5 +999,9 @@
       aspect-ratio: 1 / 1;
       object-fit: cover;
     }
+  }
+
+  p{
+    font-family: "DM Sans", sans-serif !important;
   }
 </style>
