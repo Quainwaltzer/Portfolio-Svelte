@@ -617,7 +617,7 @@
         enter: 'bottom-=0 top',
         leave: 'top+=700 bottom-=700',
         sync: 0.5,
-        debug: true
+        debug: false
       })
     })
   });
