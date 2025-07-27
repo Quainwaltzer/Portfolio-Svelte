@@ -680,7 +680,7 @@
     justify-content: center;
   }
   .main, .about, .projects, .contact {
-    width: 99vw;
+    width: 100%;
     height: 100dvh;
     padding: 5%;
     position: relative;
@@ -973,6 +973,11 @@
   /* Media Queries */
 
   @media (max-width: 767px){
+
+    * {
+      box-sizing: border-box;
+    }
+
     .project-info h1{
       font-size: 20px;
     }
@@ -1035,6 +1040,7 @@
     .info-container{
       flex-direction: column-reverse;
     }
+
   }
 
   p{
