@@ -628,10 +628,10 @@
       ease: 'easeInOutExpo',
       autoplay: onScroll({
         target: '.about',
-        enter: 'bottom-=0 top',
-        leave: 'top+=700 top+=100',
+        enter: 'bottom top+=100',
+        leave: 'top+=700 top+=200',
         sync: 0.5,
-        debug: false
+        debug: true
       })
     })
 
