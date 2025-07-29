@@ -4,6 +4,7 @@ export const scrollTarget = writable({
   home: null,
   about: null,
   projects: null,
+  certifications: null,
   contact: null
 });
 

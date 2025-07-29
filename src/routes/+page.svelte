@@ -205,7 +205,10 @@
   </section>
 
   <section bind:this={projects} class="projects">
-        <h1 class="example project-examp"><span class="before project-bef"></span>PROJECTS MADE:</h1>
+        <div class="project-title section-title-container">
+          <h1 class="project-header section-head">PROJECTS</h1>
+          <div class="project-line liners"></div>
+        </div>
 
         <div class="buoy project-holder">
           <img class="left" on:click={buoyLink} src="/img/buoy-snapshot.jpeg" alt="Buoy Snapshot" style="width: 40%; height: auto;">
@@ -238,6 +241,16 @@
         </div>
   </section>
 
+  <section bind:this={certifications} class="certifications">
+    <div class="certi-title section-title-container">
+      <div class="certi-line liners"></div>
+      <h1 class="certi-header section-head">CERTIFICATIONS</h1>
+      <div class="certi-line liners"></div>
+    </div>
+
+    <div class="intro"></div>
+  </section>
+
   <section bind:this={contact} class="contact">
     <div class="intro"></div>
   </section>
@@ -261,6 +274,7 @@
   let home;
   let about;
   let projects;
+  let certifications;
   let contact;
   let heading1, heading2, heading3, heading4;
   let lightboxProgrammaticController;
@@ -310,7 +324,7 @@
   onMount(async () => {
     await tick(); // ensures DOM is updated
       
-    scrollTarget.set({ home, about, projects, contact });
+    scrollTarget.set({ home, about, projects, certifications, contact});
     await tick();
 
     const elements = [heading1, heading2, heading3, heading4];
@@ -615,11 +629,55 @@
       autoplay: onScroll({
         target: '.about',
         enter: 'bottom-=0 top',
-        leave: 'top+=700 bottom-=700',
+        leave: 'top+=700 top+=100',
         sync: 0.5,
         debug: false
       })
     })
+
+    
+
+    await tick();
+
+    animateSectionHead({
+      sectionhead: '.project-header',
+      lines: '.project-line'
+    });
+
+    animateSectionHead({
+      sectionhead: '.certi-header',
+      lines: '.certi-line'
+    });
+
+    function animateSectionHead({sectionhead, lines}){
+      animate(lines,{
+            width: '100%',
+            duration: 1000,
+            ease: 'inExpo',
+            autoplay: onScroll({
+              target: lines,
+              enter: 'bottom top',
+              leave: 'bottom-=100 bottom',
+              sync: 0.25,
+              debug: false
+            })
+      });
+
+      animate(sectionhead, {
+        translateY: [100, 0],
+        duration: 1000,
+        opacity: [0, 1],
+        autoplay: onScroll({
+          target: sectionhead,
+          enter: 'bottom top',
+          leave: 'bottom-=100 bottom',
+          sync: 0.25,
+          debug: false
+        })
+      });
+    }
+
+    
   });
 </script>
 
@@ -706,7 +764,7 @@
     align-items: center; 
     justify-content: center;
   }
-  .main, .about, .projects, .contact {
+  .main, .about, .projects, .certifications, .contact {
     width: 100%;
     height: 100dvh;
     padding: 5%;
@@ -716,7 +774,7 @@
   }
 
   .main{
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    background: #151515;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -775,6 +833,45 @@
     background: linear-gradient(to right, #00c6ff, #0072ff);
     height: fit-content;
   }
+
+  .scroll-wrapper{
+    writing-mode: sideways-lr;
+  }
+  .certifications{
+    background: linear-gradient(to right, #8800ff, #ff00f2);
+  }
+
+  .scroll-content h1{
+    font-family: "Outfit", sans-serif;
+  }
+
+  .scroll-wrapper {
+  white-space: nowrap;
+  width: fit-content;
+  position: absolute;
+  left: -20px;
+  color: white;
+}
+
+.scroll-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 20s linear infinite;
+}
+
+.scroll-content h1 {
+  display: inline-block; /* spacing between loops */
+  font-size: 3rem;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
 
   .contact{
     background: linear-gradient(to right, #ff416c, #ff4b2b);
@@ -881,6 +978,10 @@
     text-align: justify;
     font-size: clamp(0.75rem, 2vw, 1rem);
   }
+
+    .esports-info > p{
+      font-size: clamp(0.75rem, 2vw, 1rem);
+    }
 
   .school-logo{
     width: 100px;
@@ -995,6 +1096,30 @@
   border-radius: 10px 0 10px 0;
   background: linear-gradient(to right, #ffffff, #d8d2d1);
   padding: 10px;
+}
+
+.section-title-container{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 30px;
+  height: fit-content;
+}
+
+.section-head{
+  font-family: "Outfit", sans-serif;
+  color: white;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+.liners{
+  content: "";
+    display: block;
+    width: 0%;
+    height: 5px;
+    background-color: rgb(252, 105, 0);
 }
   
   /* Media Queries */
