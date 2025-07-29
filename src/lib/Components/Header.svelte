@@ -51,7 +51,7 @@
         right: 50%;
         left: 50%;
         transform: translateX(-50%);
-        width: 20%;
+        width: 20vw;
         margin-top: 15px;
         border-radius: 50px;
         z-index: 100;
@@ -85,5 +85,20 @@
         width: 35px;
         padding: 10px;
         aspect-ratio: 1/1;
+    }
+
+    /* Media Queries */
+
+    @media (max-width: 767px){
+        .header{
+            width: 40vw;
+            min-width: 20vw;
+        }
+    }
+
+    @media (max-width: 431px){
+        .header{
+            width: 50vw;
+        }
     }
 </style>

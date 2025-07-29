@@ -329,9 +329,7 @@
 
     const elements = [heading1, heading2, heading3, heading4];
 
-    const allWords = elements.flatMap(el => text.split(el, {
-      words: { wrap: 'hidden' }
-    }).words);
+    const allWords = elements.flatMap(el => text.split(el, { words: { wrap: 'hidden' }}).words);
 
     animate(allWords, {
       y: [
@@ -635,8 +633,6 @@
       })
     })
 
-    
-
     await tick();
 
     animateSectionHead({
@@ -676,8 +672,6 @@
         })
       });
     }
-
-    
   });
 </script>
 
