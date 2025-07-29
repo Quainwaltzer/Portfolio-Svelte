@@ -133,8 +133,8 @@
         <hr>
 
         <div class="logos">
-          <img src="/img/slsu-logo.png" alt="" class="school-logo logo1">
-          <img src="/img/slsu-cen.png" alt="" class="school-logo logo2">
+          <img src="/img/slsu-logo.png" loading="lazy" alt="" class="school-logo logo1">
+          <img src="/img/slsu-cen.png" loading="lazy" alt="" class="school-logo logo2">
         </div>
 
       </div>
@@ -176,7 +176,7 @@
               {#each images as img}
                   <div class="embla__slide">
                     <Zoom>
-                      <img src={img} alt="Esports Images">
+                      <img src={img} loading="lazy" alt="Esports Images">
                     </Zoom>
                   </div>
               {/each}
