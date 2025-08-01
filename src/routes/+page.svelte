@@ -248,7 +248,42 @@
       <div class="certi-line liners"></div>
     </div>
 
-    <div class="intro"></div>
+    <div class="certi-list">
+
+      <div class="sololearn">
+          <div class="provider-container">
+            <img src="/img/sololearn.png">
+            <h1>Sololearn</h1>
+            <div class="certi-line liners"></div>
+          </div>
+      </div>
+
+      <div class="sololearn">
+          <div class="provider-container">
+            <img src="/img/hackerrank.png">
+            <h1>HackerRank</h1>
+            <div class="certi-line liners"></div>
+          </div>
+      </div>
+
+      <div class="sololearn">
+          <div class="provider-container">
+            <img src="/img/fcc.png">
+            <h1>FreeCodeCamp</h1>
+            <div class="certi-line liners"></div>
+          </div>
+      </div>
+
+      <div class="sololearn">
+          <div class="provider-container">
+            <img src="/img/cognitiveclass.png">
+            <h1>Cognitive Class / IBM</h1>
+            <div class="certi-line liners"></div>
+          </div>
+      </div>
+
+
+    </div>
   </section>
 
   <section bind:this={contact} class="contact">
@@ -465,7 +500,7 @@
           target: '.school-info > p',
           enter: 'bottom-=100 top-=20' ,
           leave: 'bottom-=150 center-=20',
-          sync: 'play',
+          sync: 0.25,
           debug: false
         })
       });
@@ -483,7 +518,7 @@
           target: '.school-info > p',
           enter: 'bottom top+=20' ,
           leave: 'top center+=20',
-          sync: 'play',
+          sync: 'play reset',
           debug: false
         })
       });
@@ -621,7 +656,7 @@
         width: '100%',
         marginTop: '0px',
         borderRadius: '0px',
-        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+        background: 'rgba(255, 255, 255, 0.1)',
         backdropFilter: 'blur(10px)',
         ease: 'easeInOutExpo',
         autoplay: onScroll({
@@ -1091,6 +1126,22 @@
     background-color: rgb(252, 105, 0);
 }
   
+.provider-container{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.provider-container h1{
+  color: white;
+}
+
+.provider-container img{
+  width: 60px;
+  height: 60px;
+  aspect-ratio: 1/1;
+}
   /* Media Queries */
 
   @media (max-width: 767px){
@@ -1172,5 +1223,9 @@
 
   p{
     font-family: "DM Sans", sans-serif !important;
+  }
+
+  h1{
+    font-family: "Outfit", sans-serif;
   }
 </style>

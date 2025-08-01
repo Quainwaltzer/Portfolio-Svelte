@@ -44,7 +44,7 @@
 </script>
 <style>
     .header{
-        background-color: #100f12; /* semi-transparent */
+        background: #151515; /* semi-transparent */
         backdrop-filter: blur(0px); /* actual blur effect */
         position: fixed;
         top: 0;
@@ -55,7 +55,7 @@
         margin-top: 15px;
         border-radius: 50px;
         z-index: 100;
-        box-shadow: 0px -1px 1px rgba(255,255,255,0.5);
+        box-shadow: 0px -2.2px 2px rgba(255,255,255,0.5);
     }
 
     .header nav ul {
