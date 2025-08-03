@@ -266,23 +266,23 @@
           <ul class="sololearn-list certi-list">
             <li>
               <p>C# Intermediate</p>
-              <button>View Here</button>
+              <button>View Here &gt;</button>
             </li>
             <li>
               <p>C++ Intermediate</p>
-              <button>View Here</button>
+              <button>View Here &gt;</button>
             </li>
             <li>
               <p>Java Intermediate</p>
-              <button>View Here</button>
+              <button>View Here &gt;</button>
             </li>
             <li>
               <p>Coding Foundations</p>
-              <button>View Here</button>
+              <button>View Here &gt;</button>
             </li>
             <li>
               <p>Web Development</p>
-              <button>View Here</button>
+              <button>View Here &gt;</button>
             </li>
           </ul>
 
@@ -294,6 +294,36 @@
             <h1>HackerRank</h1>
             <div class="certi-line liners"></div>
           </div>
+
+          <div class="hackerrank-images certi-images">
+            <img src="/img/hacker-py.png" alt="">
+            <img src="/img/hacker-cs.png" alt="">
+            <img src="/img/hacker-java.png" alt="">
+          </div>
+
+          <ul class="hackerrank-list certi-list">
+            <li>
+              <p>C# (Basic)</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Python (Basic)</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Java (Basic)</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Problem Solving (Basic)</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Software Engineer Intern Certification</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
       </div>
 
       <div class="fcc certi-container">
@@ -302,6 +332,23 @@
             <h1>FreeCodeCamp</h1>
             <div class="certi-line liners"></div>
           </div>
+
+          <div class="fcc-images certi-images">
+            <img src="/img/fcc-web.jpg" alt="">
+            <img src="/img/fcc-cs.jpg" alt="">
+          </div>
+
+          <ul class="fcc-list certi-list">
+            <li>
+              <p>Foundational C# with Microsoft</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Responsive Web Design</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
       </div>
 
       <div class="cc certi-container">
@@ -310,6 +357,32 @@
             <h1>Cognitive Class / IBM</h1>
             <div class="certi-line liners"></div>
           </div>
+
+          <div class="cc-images certi-images">
+            <img src="/img/cc-data.png" alt="">
+            <img src="/img/cc-sql.png" alt="">
+            <img src="/img/cc-machine.png" alt="">
+          </div>
+
+          <ul class="cc-list certi-list">
+            <li>
+              <p>SQL and Relational Databases 101</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Data Visualization with Python</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Machine Learning with Python</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Python 101 for Data Science</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
       </div>
 
 
@@ -479,13 +552,13 @@
         examples: '.about-examp',
         targets: '.about-examp',
         underline: '.about-bef'
-      })
+      });
 
       animateExamples({
         examples: '.project-examp',
         targets: '.project-examp',
         underline: '.project-bef'
-      })
+      });
 
       function animateExamples({examples, targets, underline}){
           animate(examples, {
@@ -518,7 +591,7 @@
       
       await tick();
 
-    const { words } = text.split(schoolparagraph, {
+      const { words } = text.split(schoolparagraph, {
       words: { wrap: 'clip' },
       });
 
@@ -542,7 +615,7 @@
 
       const split = text.split(workparagraph, {
         words: { wrap: 'clip' }
-      })
+      });
 
       // Access words without using `const { words } = ...`
       const wordElements = split.words;
@@ -565,7 +638,7 @@
 
       const splitEsports = text.split(esportsparagraph, {
         words: { wrap: 'clip' }
-      })
+      });
 
       // Access words without using `const { words } = ...`
       const esportsElements = splitEsports.words;
@@ -729,7 +802,7 @@
           sync: 0.5,
           debug: false
         })
-      })
+      });
 
       await tick();
 
@@ -1199,6 +1272,7 @@
 
 .provider-container h1{
   color: white;
+  text-wrap: nowrap;
 }
 
 .provider-container img{
@@ -1311,7 +1385,7 @@
   position: relative;
   width: 100%;
   height: auto;
-
+  margin-bottom: 30px;
 }
 
 .certi-images img:nth-child(2){
@@ -1326,11 +1400,33 @@
 
 .certi-list{
   list-style:none;
+  color: white;
 }
 
 .certi-list li{
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.certi-list button{
+  background: linear-gradient(to bottom right, #ff0051, #f65885);
+  padding: 10px;
+  width: 100px;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(0.75rem, 2vw, 0.8rem);
+}
+
+.certi-list p{
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+.fcc-images img:nth-child(1){
+  transform: scale(1);
+  margin-right: 20px;
 }
 
 </style>

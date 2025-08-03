@@ -22,8 +22,7 @@
 
     $: headerObj.set(header);
     async function scrollTo(section) {
-        $scrollTarget?.[section]?.scrollIntoView({ behavior: 'smooth' });
-        
+        $scrollTarget?.[section]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     onMount(async () => {
