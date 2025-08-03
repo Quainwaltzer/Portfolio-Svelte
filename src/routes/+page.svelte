@@ -154,7 +154,7 @@
         
         <hr style="margin-left: 10px;" class="second-hr">
 
-        <p bind:this={workparagraph}>I’m currently working as a Hybrid Data Science and Software Development Intern at Open IT, 
+        <p bind:this={workparagraph}>I worked as a Hybrid Data Science and Software Development Intern at Open IT, 
           where I contribute across the stack—supporting both data analysis and application development. 
           On the data science side, I assist in reviewing and verifying Python scripts used for 
           statistical computations, ensuring the accuracy and reliability of results.
