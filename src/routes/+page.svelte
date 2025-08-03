@@ -154,7 +154,7 @@
         
         <hr style="margin-left: 10px;" class="second-hr">
 
-        <p>I’m currently working as a Hybrid Data Science and Software Development Intern at Open IT, 
+        <p bind:this={workparagraph}>I’m currently working as a Hybrid Data Science and Software Development Intern at Open IT, 
           where I contribute across the stack—supporting both data analysis and application development. 
           On the data science side, I assist in reviewing and verifying Python scripts used for 
           statistical computations, ensuring the accuracy and reliability of results.
@@ -185,7 +185,7 @@
 
             <hr style="height: 3px; width: 50%; margin: 10px auto;">
 
-            <p>Outside the world of code and circuits, I’ve also thrived in the competitive esports scene. 
+            <p bind:this={esportsparagraph}>Outside the world of code and circuits, I’ve also thrived in the competitive esports scene. 
               As a varsity Mobile Legends player for SLSU, I had the incredible opportunity to represent 
               our university in the Philippine Collegiate Championship, where our team fought hard and 
               proudly secured Top 3 in Luzon and placed among the Top 16 nationwide. I played the role 
@@ -250,15 +250,45 @@
 
     <div class="certi-list">
 
-      <div class="sololearn">
+      <div class="sololearn certi-container">
           <div class="provider-container">
             <img src="/img/sololearn.png">
             <h1>Sololearn</h1>
             <div class="certi-line liners"></div>
           </div>
+
+          <div class="sololearn-images certi-images">
+            <img src="/img/solo-cs.jpg" alt="">
+            <img src="/img/solo-cpp.jpg" alt="">
+            <img src="/img/solo-java.jpg" alt="">
+          </div>
+
+          <ul class="sololearn-list certi-list">
+            <li>
+              <p>C# Intermediate</p>
+              <button>View Here</button>
+            </li>
+            <li>
+              <p>C++ Intermediate</p>
+              <button>View Here</button>
+            </li>
+            <li>
+              <p>Java Intermediate</p>
+              <button>View Here</button>
+            </li>
+            <li>
+              <p>Coding Foundations</p>
+              <button>View Here</button>
+            </li>
+            <li>
+              <p>Web Development</p>
+              <button>View Here</button>
+            </li>
+          </ul>
+
       </div>
 
-      <div class="sololearn">
+      <div class="hackerrank certi-container">
           <div class="provider-container">
             <img src="/img/hackerrank.png">
             <h1>HackerRank</h1>
@@ -266,7 +296,7 @@
           </div>
       </div>
 
-      <div class="sololearn">
+      <div class="fcc certi-container">
           <div class="provider-container">
             <img src="/img/fcc.png">
             <h1>FreeCodeCamp</h1>
@@ -274,7 +304,7 @@
           </div>
       </div>
 
-      <div class="sololearn">
+      <div class="cc certi-container">
           <div class="provider-container">
             <img src="/img/cognitiveclass.png">
             <h1>Cognitive Class / IBM</h1>
@@ -314,6 +344,8 @@
   let heading1, heading2, heading3, heading4;
   let lightboxProgrammaticController;
   let schoolparagraph;
+  let workparagraph;
+  let esportsparagraph;
 
   const images = [
     '/img/champion.jpg',
@@ -491,21 +523,6 @@
       });
 
       await tick();
-      animate('.school-info > p', {
-        translateX: [-200, 0],
-        opacity: [0, 1],
-        duration: 1000,
-        ease: 'inOut',
-        autoplay: onScroll({
-          target: '.school-info > p',
-          enter: 'bottom-=100 top-=20' ,
-          leave: 'bottom-=150 center-=20',
-          sync: 0.25,
-          debug: false
-        })
-      });
-
-      await tick();
 
       animate(words,{
         y: [
@@ -518,7 +535,53 @@
           target: '.school-info > p',
           enter: 'bottom top+=20' ,
           leave: 'top center+=20',
-          sync: 'play reset',
+          sync: 'play play',
+          debug: false
+        })
+      });
+
+      const split = text.split(workparagraph, {
+        words: { wrap: 'clip' }
+      })
+
+      // Access words without using `const { words } = ...`
+      const wordElements = split.words;
+
+      animate(wordElements,{
+        y: [
+          { to: ['-100%', '0%'] }
+        ],
+        duration: 750,
+        ease: 'inOut',
+        delay: stagger(50),
+        autoplay: onScroll({
+          target: '.intern-info > p',
+          enter: 'bottom top+=20' ,
+          leave: 'top center+=20',
+          sync: 'play play',
+          debug: false
+        })
+      });
+
+      const splitEsports = text.split(esportsparagraph, {
+        words: { wrap: 'clip' }
+      })
+
+      // Access words without using `const { words } = ...`
+      const esportsElements = splitEsports.words;
+
+      animate(esportsElements,{
+        y: [
+          { to: ['-100%', '0%'] }
+        ],
+        duration: 750,
+        ease: 'inOut',
+        delay: stagger(50),
+        autoplay: onScroll({
+          target: '.intern-info > p',
+          enter: 'bottom top+=20' ,
+          leave: 'top center+=20',
+          sync: 'play play',
           debug: false
         })
       });
@@ -644,7 +707,7 @@
             target,
             enter: 'center top-=100',
             leave: 'center top-=50',
-            sync: 'play',
+            sync: 0.3,
             debug: false
           })
         });
@@ -843,6 +906,7 @@
   }
   .certifications{
     background: linear-gradient(to right, #8800ff, #ff00f2);
+    height: fit-content;
   }
 
   .scroll-content h1{
@@ -1228,4 +1292,45 @@
   h1{
     font-family: "Outfit", sans-serif;
   }
+
+.certi-container{
+  margin-bottom: 40px;
+}
+
+.certi-images img{
+  width: 30vw;
+  height: auto;
+  border-radius: 20px;
+  background-color: white;
+  padding: 10px;
+}
+
+.certi-images{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: auto;
+
+}
+
+.certi-images img:nth-child(2){
+  transform: scale(1);
+}
+
+.certi-images img:nth-child(1),
+.certi-images img:nth-child(3)
+{
+  transform: scale(0.9);
+}
+
+.certi-list{
+  list-style:none;
+}
+
+.certi-list li{
+  display: flex;
+  justify-content: space-between;
+}
+
 </style>
