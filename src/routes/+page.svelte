@@ -535,7 +535,14 @@
   </section>
 
   <section bind:this={contact} class="contact">
+
+    <div class="contact-title section-title-container">
+          <div class="contact-line liners"></div>
+          <h1 class="contact-header section-head">CONTACT ME</h1>
+        </div>
+
     <div class="intro"></div>
+
   </section>
 
 </div>
@@ -961,6 +968,11 @@
         lines: '.certi-line'
       });
 
+      animateSectionHead({
+        sectionhead: '.contact-header',
+        lines: '.contact-line'
+      });
+
       function animateSectionHead({sectionhead, lines}){
         animate(lines,{
               width: '100%',
@@ -1065,6 +1077,10 @@
     width: 40%;
   }
 
+  .project-line{
+    background-color: #9d1d1d !important;
+  }
+
   .left {
     background-color: black;
     border-radius: 0 20px 0 20px;
@@ -1143,14 +1159,14 @@
   }
 
   .about{
-    background: linear-gradient(to bottom, #151515, #9d1d1d);
+    background: linear-gradient(to bottom, #151515, #ff5f1f);
     font-family: 'Inter', sans-serif;
     color: white;
     height: fit-content;
   }
 
   .projects{
-    background: linear-gradient(to bottom, #9d1d1d, #ff7676);
+    background: linear-gradient(to bottom, #ff5f1f, #9d1d1d);
     height: fit-content;
   }
 
@@ -1158,7 +1174,7 @@
     writing-mode: sideways-lr;
   }
   .certifications{
-    background: linear-gradient(to bottom, #ff7676, #9d1d1d, #151515);
+    background: linear-gradient(to bottom, #9d1d1d, #ff5f1f, #151515);
     height: fit-content;
   }
 
@@ -1618,13 +1634,18 @@
   margin: 0 auto;
   width: 100%;
   grid-template-rows: repeat(4, auto);
-  gap: 20px;
+  gap: 20px 100px;
 }
 
 .certi-others .provider-container img{
   border-radius: 50px;
   object-fit: cover;
   aspect-ratio: 1/1;
+}
+
+.fcc .liners,
+.cc .liners{
+  background-color: #9d1d1d !important;
 }
 
 .other-title{
@@ -1653,5 +1674,9 @@
 
 .kaggle{
   grid-column: 1/-1;
+}
+
+.contact-header{
+  text-wrap: nowrap;
 }
 </style>
