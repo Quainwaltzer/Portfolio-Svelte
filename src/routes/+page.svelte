@@ -216,7 +216,11 @@
           <div class="right project-info">
             <h1>Buoy</h1>
             <h5>A Project by SLSU Turing Machines (BSCpE III - GF)</h5>
-            <p>Lorem ipsum sit dolor amet.</p>
+            <p>Buoy is a mobile phishing detection app designed to identify and flag suspicious links 
+              using a machine learning-powered backend. Built with FlutterFlow for rapid UI development 
+              and integrated with a custom ML model via API, Buoy analyzes URLs in real time to protect 
+              users from phishing threats. The app was submitted by OTIs Philippines to AppCon 2024, 
+              where it earned a spot in the Top 100 projects nationwide.</p>
           </div>
         </div>
 
@@ -226,7 +230,13 @@
           <div class="right project-info">
             <h1>TypeRush Arena</h1>
             <h5>A Mobile Development (Android Studio) Project.</h5>
-            <p>Lorem ipsum sit dolor amet.</p>
+            <p>TypeRush Arena is a mobile development project built in Android Studio that delivers a 
+              fast-paced, skill-based typing experience on mobile devices. The game features three 
+              distinct modes: Time Attack, where players must complete three full sentences within 
+              30 seconds; Racing Mode, which pits players against AI or other users in a race to type 
+              the fastest; and Combat Mode, a competitive battle where players deal and receive damage 
+              through typing accuracy and speed — with the first to reach 0 HP losing. TypeRush Arena 
+              challenges reflexes, speed, and precision in an engaging and competitive environment.</p>
           </div>
         </div>
 
@@ -236,7 +246,17 @@
           <div class="right project-info">
             <h1>Regional Analysis of Internet Connectivity, Literacy Rates, and Teenage Pregnancy</h1>
             <h5>A Mobile Development (Android Studio) Project.</h5>
-            <p>Lorem ipsum sit dolor amet.</p>
+            <p>This project explores the relationship between internet connectivity, literacy rates, and teenage 
+              pregnancy across various regions in the Philippines. Using publicly available datasets, we performed 
+              exploratory data analysis (EDA) and built interactive geo-visualizations to uncover regional patterns 
+              and correlations.
+              The analysis aimed to determine whether low internet access and literacy levels are associated with 
+              higher rates of teenage pregnancy. The project utilized a range of Python-based visualization tools 
+              including GeoPandas and Folium for mapping, as well as Matplotlib and Seaborn for statistical plotting. 
+              Results were presented through interactive maps and dashboards to enhance interpretability for both 
+              technical and non-technical audiences.
+              This project highlights the power of data science in addressing social issues through meaningful 
+              insights and visual storytelling.</p>
           </div>
         </div>
   </section>
@@ -385,6 +405,131 @@
 
       </div>
 
+      <div class="certi-others">
+
+        <div class="other-title">
+          <div class="certi-line liners"></div>
+          <h1 class="certi-header section-head">Other Certificates</h1>
+          <div class="certi-line liners"></div>
+        </div>
+
+        <div class="provider-container">
+
+          <img src="/img/gfg.png">
+          <h1>Geeks for Geeks</h1>
+          <div class="certi-line liners"></div>
+
+          <ul class="gfg-list certi-list">
+            <li>
+              <p>Java (Basics)</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Python (Basics)</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="provider-container">
+
+          <img src="/img/futurelearn.png">
+          <h1>Future Learn</h1>
+          <div class="certi-line liners"></div>
+
+          <ul class="futurelearn-list certi-list">
+            <li>
+              <p>Digital Skills: Web Analytics</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="provider-container">
+
+          <img src="/img/saylor.png">
+          <h1>Saylor Academy</h1>
+          <div class="certi-line liners"></div>
+
+          <ul class="saylor-list certi-list">
+            <li>
+              <p>Discrete Structures</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="provider-container">
+
+          <img src="/img/aws.png">
+          <h1>Amazon Web Services</h1>
+          <div class="certi-line liners"></div>
+
+          <ul class="gfg-list certi-list">
+            <li>
+              <p>Foundations of Prompt Engineering</p>
+              <button>View Here &gt;</button>
+            </li>
+            <li>
+              <p>Cloud Security Essential for Executives</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="provider-container">
+
+          <img src="/img/tou.png">
+          <h1>The Open University</h1>
+          <div class="certi-line liners"></div>
+
+          <ul class="gfg-list certi-list">
+            <li>
+              <p>An introduction to electronics</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="provider-container">
+
+          <img src="/img/codingame.png">
+          <h1>CodinGame</h1>
+          <div class="certi-line liners"></div>
+
+          <ul class="gfg-list certi-list">
+            <li>
+              <p>C# Problem Solving</p>
+              <button>View Here &gt;</button>
+            </li>
+          </ul>
+
+        </div>
+
+        <div class="provider-container kaggle">
+
+          <img src="/img/kaggle.png">
+          <h1>Kaggle</h1>
+          <div class="certi-line liners"></div>
+        
+
+          <ul class="gfg-list certi-list">
+              <li>
+                <p>Data Visualization</p>
+                <button>View Here &gt;</button>
+              </li>
+              <li>
+                <p>Pandas</p>
+                <button>View Here &gt;</button>
+              </li>
+          </ul>
+
+        </div>
 
     </div>
   </section>
@@ -843,8 +988,34 @@
           })
         });
       }
-    });
 
+      await tick();
+
+      animate('.sololearn-images img:nth-child(2)',{
+          translateY: [100 ,0],
+          opacity: [0, 1],
+          duration: 500,
+          ease: 'in',
+          autoplay: onScroll({
+            target: '.sololearn .provider-container',
+            enter: 'bottom top-=100',
+            leave: 'bottom top+=100',
+            sync: 0.25,
+            debug: false,
+            onEnterForward: () => {
+              animate('.sololearn-images img:nth-child(1)', {
+                opacity: [0, 1],
+                scale: [0.88, 0.9],
+                duration: 500,
+                delay: 1000,
+                ease: 'in',
+            })
+          },
+          })
+          
+      });
+
+    });
   
 </script>
 
@@ -878,11 +1049,20 @@
     align-items: center;
     margin: 0 auto;
     margin-bottom: 40px;
+    gap: 5rem;
   }
+
+  .project-holder p{
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    text-align: justify;
+    margin-top: 10px;
+  }
+
   .project-info{
     color: white;
     font-family: 'Inter', sans-serif;
     text-align: end;
+    width: 40%;
   }
 
   .left {
@@ -908,9 +1088,9 @@
     width: 100%;
     height: 100dvh;
     padding: 5%;
-    position: relative;
     overflow: hidden;
-    box-shadow: inset 0 -10px 30px -5px rgba(0, 0, 0, 0.5);
+    position: relative;
+    /* box-shadow: inset 0 -10px 30px -5px rgba(0, 0, 0, 0.5); */
   }
 
   .main{
@@ -935,19 +1115,18 @@
     width: 200px;
     height: 50px;
     font-family: 'Outfit', sans-serif;
-    background-color: transparent;
+    background-color: #151515;
     border: none;
     border-radius: 10px;
     color: white;
     box-shadow: inset 2px 2px 5px -2px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 5px -2px rgba(255, 255, 255, 0.5);
+    inset -2px -2px 4px -2px rgba(255, 255, 255, 0.3);
     transition: box-shadow 0.5s ease, transform 0.5s ease;
   }
 
   .goto-about:hover{
-    box-shadow: inset 2px 2px 5px -2px rgba(0, 0, 0, 0.5),
-    inset -2px -2px 5px -1px rgba(255, 115, 0, 0.7);
-    transform: scale(1.05);
+    box-shadow: inset 2px 2px 5px 2px rgba(255, 115, 0, 0.3),
+    inset -2px -2px 5px 2px rgba(255, 115, 0, 0.3);
   }
 
   i{
@@ -957,20 +1136,21 @@
     position:absolute;
     width: 30%;
     left: -10%;
-    bottom: -10%;
+    bottom: 0;
     height: auto;
     overflow: visible;
+    z-index: 99;
   }
 
   .about{
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to bottom, #151515, #9d1d1d);
     font-family: 'Inter', sans-serif;
     color: white;
     height: fit-content;
   }
 
   .projects{
-    background: linear-gradient(to right, #00c6ff, #0072ff);
+    background: linear-gradient(to bottom, #9d1d1d, #ff7676);
     height: fit-content;
   }
 
@@ -978,7 +1158,7 @@
     writing-mode: sideways-lr;
   }
   .certifications{
-    background: linear-gradient(to right, #8800ff, #ff00f2);
+    background: linear-gradient(to bottom, #ff7676, #9d1d1d, #151515);
     height: fit-content;
   }
 
@@ -1015,7 +1195,7 @@
 }
 
   .contact{
-    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    background: #151515;
   }
 
   .info h1 {
@@ -1412,13 +1592,15 @@
 .certi-list button{
   background: linear-gradient(to bottom right, #ff0051, #f65885);
   padding: 10px;
-  width: 100px;
+  width: fit-content;
+  height: 40px;
   outline: none;
   border: none;
-  border-radius: 50px;
+  border-radius: 20px 0 20px 0;
   color: white;
   font-family: "Outfit", sans-serif;
   font-size: clamp(0.75rem, 2vw, 0.8rem);
+  text-wrap: nowrap;
 }
 
 .certi-list p{
@@ -1429,4 +1611,47 @@
   margin-right: 20px;
 }
 
+.certi-others{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  max-width: 1000px; 
+  margin: 0 auto;
+  width: 100%;
+  grid-template-rows: repeat(4, auto);
+  gap: 20px;
+}
+
+.certi-others .provider-container img{
+  border-radius: 50px;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.other-title{
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-wrap: nowrap;
+  gap: 1.5rem;
+}
+
+.certi-others .provider-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.certi-others .provider-container > .certi-list{
+  width: 100%;
+}
+
+.certi-others .provider-container > .certi-list li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kaggle{
+  grid-column: 1/-1;
+}
 </style>
