@@ -9,7 +9,6 @@
 	import emblaCarouselSvelte from 'embla-carousel-svelte';
 	import Autoplay from 'embla-carousel-autoplay';
 	import AutoScroll from 'embla-carousel-auto-scroll';
-
 	import Zoom from 'svelte-medium-image-zoom';
 	import 'svelte-medium-image-zoom/dist/styles.css';
 	let home;
@@ -22,6 +21,16 @@
 	let schoolparagraph;
 	let workparagraph;
 	let esportsparagraph;
+	let name = '';
+	let email = '';
+	let queries = '';
+	let send = '';
+	let isFormValid;
+	let nameInput;
+	let emailInput;
+	let messageArea;
+	let alertingS;
+	let sendButton;
 
 	const images = [
 		'/img/champion.jpg',
@@ -64,6 +73,69 @@
 
 	function hackerrankLink() {
 		window.location.href = 'https://www.hackerrank.com/profile/quainwaltzer';
+	}
+
+	async function sendEmail() {
+		const res = await fetch('/api/send-email', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				name,
+				email,
+				message: queries
+			})
+		});
+
+		const data = await res.json();
+
+		if (res.ok) {
+			nameInput.value = '';
+			emailInput.value = '';
+			messageArea.value = '';
+
+			showAlert('Email sent successfully!');
+		} else {
+			showAlert('Failed to send email: ' + data.message);
+		}
+	}
+
+	$: if (alertingS) console.log('alertingS is ready!');
+
+	$: {
+		isFormValid = name.trim() !== '' && email.trim() !== '' && queries.trim() !== '';
+		if (name.trim() !== '' && nameInput) {
+			nameInput.style.boxShadow =
+				'inset 1px 1px 4px 2px rgba(0,0,0,0.7), inset -2px -2px 3px -2px rgba(255,255,255,0.5)';
+		} else if ((name == null || name == undefined || name.trim() === '') && nameInput) {
+			nameInput.style.boxShadow = 'inset 0 0 4px red';
+		}
+
+		if (email.trim() !== '' && emailInput) {
+			emailInput.style.boxShadow =
+				'inset 1px 1px 4px 2px rgba(0,0,0,0.7), inset -2px -2px 3px -2px rgba(255,255,255,0.5)';
+		} else if ((email == null || email == undefined || email.trim() === '') && emailInput) {
+			emailInput.style.boxShadow = 'inset 0 0 4px red';
+		}
+
+		if (queries.trim() !== '' && messageArea) {
+			messageArea.style.boxShadow =
+				'inset 1px 1px 4px 2px rgba(0,0,0,0.7), inset -2px -2px 3px -2px rgba(255,255,255,0.5)';
+		} else if ((queries == null || queries == undefined || queries.trim() === '') && messageArea) {
+			messageArea.style.boxShadow = 'inset 0 0 4px red';
+		}
+	}
+
+	async function showAlert(message) {
+		await tick(); // ensures DOM is updated
+		console.log('The method is called');
+
+		alertingS.textContent = message;
+		alertingS.style.opacity = '1';
+		setTimeout(() => {
+			alertingS.style.opacity = '0';
+		}, 3000);
 	}
 
 	onMount(async () => {
@@ -114,7 +186,7 @@
 						translateY: 0,
 						translateX: 0
 					},
-					`<+=0` // back down after 750ms
+					`<+=0`
 				);
 		});
 
@@ -218,7 +290,6 @@
 			words: { wrap: 'clip' }
 		});
 
-		// Access words without using `const { words } = ...`
 		const wordElements = split.words;
 
 		animate(wordElements, {
@@ -239,7 +310,6 @@
 			words: { wrap: 'clip' }
 		});
 
-		// Access words without using `const { words } = ...`
 		const esportsElements = splitEsports.words;
 
 		animate(esportsElements, {
@@ -499,6 +569,9 @@
 
 		function animateCertiImages({ main, left, right, targets }) {
 			let hasAnimated = false;
+			let hasAnimatedMain = false;
+
+			if (hasAnimatedMain) return;
 			animate(main, {
 				translateY: [100, 0],
 				opacity: [0, 1],
@@ -508,11 +581,12 @@
 					target: targets,
 					enter: 'bottom top-=50',
 					leave: 'bottom top+=100',
-					sync: 'play stop',
-					debug: false,
+					sync: 'play',
+					debug: true,
 					onEnterForward: () => {
-						if (hasAnimated) return; // Skip if already animated
+						if (hasAnimated) return;
 						hasAnimated = true;
+						hasAnimatedMain = true;
 						animate([left, right], {
 							opacity: [0, 1],
 							scale: [0.55, 0.9],
@@ -756,7 +830,7 @@
 
 		<div class="more">
 			<button on:click={gotoAbout} class="goto-about"
-				>GO TO ABOUT <span><i class="fas fa-arrow-down" style="color: white;"></i></span></button
+				>GO TO ABOUT <span><i class="fas fa-arrow-down" style="color: #fffff0;"></i></span></button
 			>
 		</div>
 	</section>
@@ -1192,7 +1266,52 @@
 			<h1 class="contact-header section-head">CONTACT ME</h1>
 		</div>
 
-		<div class="intro"></div>
+		<div class="contact-container">
+			<h1 class="email-header">This goes to email</h1>
+
+			<div class="send-container">
+				<div class="name-wrapper inputs-wrapper">
+					<input
+						type="text"
+						placeholder=""
+						class="send-name"
+						bind:value={name}
+						bind:this={nameInput}
+					/>
+					<p class="placeholder">Enter name here</p>
+				</div>
+
+				<div class="email-wrapper inputs-wrapper">
+					<input
+						type="text"
+						placeholder=""
+						class="send-email"
+						bind:value={email}
+						bind:this={emailInput}
+					/>
+					<p class="placeholder">Enter email here</p>
+				</div>
+
+				<div class="email-wrapper inputs-wrapper">
+					<textarea
+						type="text"
+						placeholder=""
+						class="send-message"
+						bind:value={queries}
+						bind:this={messageArea}
+					></textarea>
+					<p class="placeholder">Enter queries here</p>
+				</div>
+
+				<button
+					class="send-to-email"
+					on:click={sendEmail}
+					disabled={!isFormValid}
+					bind:this={sendButton}>Send</button
+				>
+				<div id="custom-alert" class="alert" bind:this={alertingS}>Email sent successfully!</div>
+			</div>
+		</div>
 	</section>
 </div>
 
@@ -1204,7 +1323,7 @@
 		font-family: 'Outfit', sans-serif;
 		font-optical-sizing: auto;
 		font-size: 50px;
-		color: white;
+		color: #fffff0;
 		margin-bottom: 50px;
 	}
 
@@ -1235,7 +1354,7 @@
 	}
 
 	.project-info {
-		color: white;
+		color: #fffff0;
 		font-family: 'Inter', sans-serif;
 		text-align: end;
 		width: 40%;
@@ -1249,7 +1368,7 @@
 		background-color: black;
 		border-radius: 0 20px 0 20px;
 		display: inline-block;
-		box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Optional shadow */
+		box-shadow: 20px 20px 10px -10px rgba(0, 0, 0, 0.5);
 		transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		cursor: pointer;
 	}
@@ -1284,7 +1403,7 @@
 		align-items: center;
 		font-family: 'Inter', sans-serif;
 		padding-right: 15%;
-		color: white;
+		color: #fffff0;
 	}
 
 	.more {
@@ -1301,7 +1420,7 @@
 		background-color: #151515;
 		border: none;
 		border-radius: 10px;
-		color: white;
+		color: #fffff0;
 		box-shadow:
 			inset 2px 2px 5px -2px rgba(0, 0, 0, 0.5),
 			inset -2px -2px 4px -2px rgba(255, 255, 255, 0.3);
@@ -1332,7 +1451,7 @@
 	.about {
 		background: linear-gradient(to bottom, #151515, #ff5f1f);
 		font-family: 'Inter', sans-serif;
-		color: white;
+		color: #fffff0;
 		height: fit-content;
 	}
 
@@ -1341,35 +1460,9 @@
 		height: fit-content;
 	}
 
-	.scroll-wrapper {
-		writing-mode: sideways-lr;
-	}
 	.certifications {
 		background: linear-gradient(to bottom, #9d1d1d, #ff5f1f, #151515);
 		height: fit-content;
-	}
-
-	.scroll-content h1 {
-		font-family: 'Outfit', sans-serif;
-	}
-
-	.scroll-wrapper {
-		white-space: nowrap;
-		width: fit-content;
-		position: absolute;
-		left: -20px;
-		color: white;
-	}
-
-	.scroll-content {
-		display: inline-block;
-		white-space: nowrap;
-		animation: scroll-left 20s linear infinite;
-	}
-
-	.scroll-content h1 {
-		display: inline-block; /* spacing between loops */
-		font-size: 3rem;
 	}
 
 	@keyframes scroll-left {
@@ -1549,7 +1642,7 @@
 	hr {
 		width: 5px;
 		height: 200px;
-		background-color: white;
+		background-color: #fffff0;
 	}
 
 	.project-info h1 {
@@ -1570,7 +1663,7 @@
 
 	.socmed-list li {
 		list-style: none;
-		background-color: white;
+		background-color: #fffff0;
 		margin-bottom: 20px;
 		padding: 10px;
 		border-radius: 50%;
@@ -1621,7 +1714,7 @@
 
 	.section-head {
 		font-family: 'Outfit', sans-serif;
-		color: white;
+		color: #fffff0;
 		font-size: clamp(1.5rem, 5vw, 3rem);
 	}
 
@@ -1641,7 +1734,7 @@
 	}
 
 	.provider-container h1 {
-		color: white;
+		color: #fffff0;
 		text-wrap: nowrap;
 	}
 
@@ -1668,7 +1761,7 @@
 		.second-hr {
 			height: 3px;
 			width: 100%;
-			background-color: white;
+			background-color: #fffff0;
 		}
 
 		.main {
@@ -1743,8 +1836,9 @@
 		width: 30vw;
 		height: auto;
 		border-radius: 20px;
-		background-color: white;
+		background-color: #fffff0;
 		padding: 10px;
+		box-shadow: 20px 20px 10px -10px rgba(0, 0, 0, 0.5);
 	}
 
 	.certi-images {
@@ -1767,7 +1861,7 @@
 
 	.certi-list {
 		list-style: none;
-		color: white;
+		color: #fffff0;
 	}
 
 	.certi-list li {
@@ -1784,7 +1878,7 @@
 		outline: none;
 		border: none;
 		border-radius: 20px 0 20px 0;
-		color: white;
+		color: #fffff0;
 		font-family: 'Outfit', sans-serif;
 		font-size: clamp(0.75rem, 2vw, 0.8rem);
 		text-wrap: nowrap;
@@ -1849,5 +1943,138 @@
 
 	.contact-header {
 		text-wrap: nowrap;
+	}
+
+	.contact-container {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.contact-container h1 {
+		color: #fffff0;
+	}
+
+	.contact-container textarea {
+		width: 50vw;
+		height: 100px;
+		resize: none;
+		background: #151515;
+		outline: none;
+		border: none;
+		font-family: 'Outfit', sans-serif;
+		color: #fffff0;
+		font-size: clamp(0.75rem, 2vw, 1rem);
+		border-radius: 20px;
+		box-shadow:
+			inset -1px -1px 4px -1px rgba(255, 255, 255, 0.5),
+			inset 1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+		padding: 20px;
+		scrollbar-color: transparent transparent; /* thumb color, track color */
+		scrollbar-width: thin;
+		scrollbar-arrow-color: transparent;
+	}
+
+	.send-container {
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.send-name,
+	.send-email {
+		background: #151515;
+		outline: none;
+		border: none;
+		font-family: 'Outfit', sans-serif;
+		color: #fffff0;
+		font-size: clamp(0.75rem, 2vw, 1rem);
+		border-radius: 20px;
+		box-shadow: inset 0 0 4px red;
+		padding: 20px;
+		scrollbar-color: transparent transparent; /* thumb color, track color */
+		scrollbar-width: thin;
+		scrollbar-arrow-color: transparent;
+		width: 100%;
+	}
+
+	.inputs-wrapper {
+		position: relative;
+	}
+
+	.placeholder {
+		color: rgba(255, 255, 255, 0.3);
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 10px;
+		background: #151515;
+		width: fit-content;
+		text-wrap: nowrap;
+		padding: 10px 5px;
+		border-radius: 100px;
+		transition:
+			transform 0.5s ease,
+			color 0.5s ease;
+		user-select: none;
+		pointer-events: none;
+	}
+
+	.send-name:focus ~ p,
+	.send-name:not(:placeholder-shown) ~ p,
+	.send-email:focus ~ p,
+	.send-email:not(:placeholder-shown) ~ p {
+		transform: translateY(-120%);
+		color: #fffff0;
+	}
+
+	.send-message:focus ~ p,
+	.send-message:not(:placeholder-shown) ~ p {
+		transform: translateY(-180%);
+		color: #fffff0;
+	}
+
+	.alert {
+		position: fixed;
+		top: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+		background: #333;
+		color: #fffff0;
+		padding: 12px 24px;
+		border-radius: 6px;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 0.3s ease;
+		z-index: 9999;
+	}
+
+	.send-to-email {
+		background: #fffff0;
+		color: #151515;
+		border-radius: 10px;
+		padding: 10px;
+		width: 10rem;
+		margin: 0 auto;
+		opacity: 1;
+		font-family: 'Outfit', sans-serif;
+		font-size: 20px;
+		font-weight: bold;
+		box-shadow:
+			0 4px 8px rgba(255, 255, 255, 0.5),
+			0 1px 2px rgba(255, 255, 255, 0.5);
+		border: none;
+		outline: none;
+		transition: transform 0.5s ease;
+	}
+
+	.send-to-email:hover {
+		transform: scale(1.1);
+	}
+
+	.send-to-email:disabled {
+		opacity: 0.3;
 	}
 </style>
