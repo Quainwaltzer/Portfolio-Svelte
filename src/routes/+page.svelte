@@ -132,7 +132,7 @@
 				enter: 'bottom top+=200',
 				leave: 'bottom top+=300',
 				sync: 0.5,
-				debug: true
+				debug: false
 			})
 		});
 	}
