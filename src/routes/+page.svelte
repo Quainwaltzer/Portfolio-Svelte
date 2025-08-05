@@ -101,6 +101,94 @@
 		}
 	}
 
+	function runMobileAnimations() {
+		animateProjectBlock({
+			leftSelector: '.buoy .left',
+			rightSelector: '.buoy .right',
+			targetSelector: '.buoy .left'
+		});
+
+		animateProjectBlock({
+			leftSelector: '.tra .left',
+			rightSelector: '.tra .right',
+			targetSelector: '.tra .left'
+		});
+
+		animateProjectBlock({
+			leftSelector: '.map .left',
+			rightSelector: '.map .right',
+			targetSelector: '.map .left'
+		});
+	}
+
+	function animateProjectBlock({ leftSelector, rightSelector, targetSelector }) {
+		const target = document.querySelector(targetSelector);
+		if (!target) return;
+
+		animate(leftSelector, {
+			translateX: [-200, 0],
+			translateY: [100, 0],
+			duration: 1000,
+			ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+			autoplay: onScroll({
+				target,
+				enter: 'bottom top',
+				leave: 'bottom bottom',
+				sync: 0.25,
+				debug: true
+			})
+		});
+
+		animate(rightSelector, {
+			translateX: [200, 0],
+			translateY: [100, 0],
+			duration: 1000,
+			ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+			autoplay: onScroll({
+				target,
+				enter: 'bottom-=0 top',
+				leave: 'top+=700 bottom',
+				sync: 0.25,
+				debug: false
+			})
+		});
+
+		animate(`${rightSelector} > *`, {
+			translateY: [20, 0],
+			opacity: [0, 1],
+			duration: 1000,
+			delay: stagger(300),
+			ease: 'cubicBezier(0.68, 0.32, 0.37, 0.98)',
+			autoplay: onScroll({
+				target,
+				enter: 'center top-=100',
+				leave: 'center top-=50',
+				sync: 0.3,
+				debug: false
+			})
+		});
+	}
+
+	onMount(() => {
+		const mq = window.matchMedia('(max-width: 767px)');
+
+		// Initial check
+		if (mq.matches) {
+			runMobileAnimations();
+		}
+
+		// Watch for changes
+		const listener = (e) => {
+			if (e.matches) {
+				runMobileAnimations();
+			}
+		};
+
+		mq.addEventListener('change', listener);
+
+		return () => mq.removeEventListener('change', listener);
+	});
+
 	$: if (alertingS) console.log('alertingS is ready!');
 
 	$: {
@@ -1840,82 +1928,6 @@
 		height: 60px;
 		aspect-ratio: 1/1;
 	}
-	/* Media Queries */
-
-	@media (max-width: 767px) {
-		* {
-			box-sizing: border-box;
-		}
-
-		.project-info h1 {
-			font-size: 20px;
-		}
-
-		.intern-info {
-			flex-direction: column;
-		}
-
-		.second-hr {
-			height: 3px;
-			width: 100%;
-			background-color: #fffff0;
-		}
-
-		.main {
-			padding-right: 5%;
-		}
-
-		.info-container {
-			width: 100vw;
-		}
-
-		.image-position {
-			width: 200px;
-			height: 200px;
-			aspect-ratio: 1/1;
-		}
-
-		.image-container::before,
-		.image-container::after {
-			display: none;
-		}
-
-		.images {
-			width: 100%;
-			display: flex;
-			gap: 1rem;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.imaging-1 {
-			position: static;
-			transform: rotate(0deg);
-			width: 250px;
-			height: auto;
-			aspect-ratio: 1 / 1;
-			object-fit: cover;
-		}
-
-		.imaging-2 {
-			position: static;
-			transform: rotate(0deg);
-			width: 250px;
-			height: auto;
-			aspect-ratio: 1 / 1;
-			object-fit: cover;
-		}
-
-		.info-container {
-			flex-direction: column-reverse;
-		}
-	}
-
-	@media (max-width: 631px) {
-		svg {
-			display: none;
-		}
-	}
 
 	p {
 		font-family: 'DM Sans', sans-serif !important;
@@ -2173,5 +2185,90 @@
 
 	.send-to-email:disabled {
 		opacity: 0.3;
+	}
+
+	/* Media Queries */
+
+	@media (max-width: 767px) {
+		* {
+			box-sizing: border-box;
+		}
+
+		.project-info h1 {
+			font-size: 20px;
+		}
+
+		.intern-info {
+			flex-direction: column;
+		}
+
+		.second-hr {
+			height: 3px;
+			width: 100%;
+			background-color: #fffff0;
+		}
+
+		.main {
+			padding-right: 5%;
+		}
+
+		.info-container {
+			width: 100vw;
+		}
+
+		.image-position {
+			width: 200px;
+			height: 200px;
+			aspect-ratio: 1/1;
+		}
+
+		.image-container::before,
+		.image-container::after {
+			display: none;
+		}
+
+		.images {
+			width: 100%;
+			display: flex;
+			gap: 1rem;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.imaging-1 {
+			position: static;
+			transform: rotate(0deg);
+			width: 250px;
+			height: auto;
+			aspect-ratio: 1 / 1;
+			object-fit: cover;
+		}
+
+		.imaging-2 {
+			position: static;
+			transform: rotate(0deg);
+			width: 250px;
+			height: auto;
+			aspect-ratio: 1 / 1;
+			object-fit: cover;
+		}
+
+		.info-container {
+			flex-direction: column-reverse;
+		}
+
+		.project-holder {
+			flex-direction: column;
+		}
+
+		.project-info {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 631px) {
+		svg {
+			display: none;
+		}
 	}
 </style>
