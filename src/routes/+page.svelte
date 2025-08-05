@@ -464,10 +464,10 @@
 			ease: 'easeInOutExpo',
 			autoplay: onScroll({
 				target: '.about',
-				enter: 'bottom top+=100',
-				leave: 'top+=700 top+=200',
+				enter: 'bottom top+=200',
+				leave: 'bottom top+=300',
 				sync: 0.5,
-				debug: false,
+				debug: true,
 				onEnterForward: () => {
 					const labels = ['Home', 'About', 'Projects', 'Certifications', 'Contacts'];
 					const icons = ['fa-home', 'fa-question', 'fa-cog', 'fa-file', 'fa-phone'];
@@ -485,7 +485,7 @@
 						w.style.borderRadius = '0 15px 0 15px';
 					});
 				},
-				onEnterBackward: () => {
+				onLeaveBackward: () => {
 					const labels = ['Home', 'About', 'Projects', 'Certifications', 'Contacts'];
 					const icons = ['fa-home', 'fa-question', 'fa-cog', 'fa-file', 'fa-phone'];
 					const buttons = $headerObj.querySelectorAll('li button');
