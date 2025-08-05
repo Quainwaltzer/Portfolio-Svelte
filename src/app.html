@@ -23,15 +23,33 @@
 <body data-sveltekit-preload-data="hover">
 	<div class="static-loader">
 		<div class="loading">
-			<ul class="bars">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
+			<svg class='logo-svg' width="150" height="150" viewBox="0 0 75 75" fill="none"
+				xmlns="http://www.w3.org/2000/svg">
+				<mask id="path-1-outside-1_1_7" maskUnits="userSpaceOnUse" x="41" y="41" width="27" height="23"
+					fill="black">
+					<rect fill="white" x="41" y="41" width="27" height="23" />
+					<path
+						d="M58.51 63H42.52V42H58.36V46.11H47.11V50.37H57.01V54.48H47.11V58.89H58.51V63ZM66.8177 63H61.9577V58.2H66.8177V63Z" />
+				</mask>
+				<path
+					d="M58.51 63V64H59.51V63H58.51ZM42.52 63H41.52V64H42.52V63ZM42.52 42V41H41.52V42H42.52ZM58.36 42H59.36V41H58.36V42ZM58.36 46.11V47.11H59.36V46.11H58.36ZM47.11 46.11V45.11H46.11V46.11H47.11ZM47.11 50.37H46.11V51.37H47.11V50.37ZM57.01 50.37H58.01V49.37H57.01V50.37ZM57.01 54.48V55.48H58.01V54.48H57.01ZM47.11 54.48V53.48H46.11V54.48H47.11ZM47.11 58.89H46.11V59.89H47.11V58.89ZM58.51 58.89H59.51V57.89H58.51V58.89ZM58.51 63V62H42.52V63V64H58.51V63ZM42.52 63H43.52V42H42.52H41.52V63H42.52ZM42.52 42V43H58.36V42V41H42.52V42ZM58.36 42H57.36V46.11H58.36H59.36V42H58.36ZM58.36 46.11V45.11H47.11V46.11V47.11H58.36V46.11ZM47.11 46.11H46.11V50.37H47.11H48.11V46.11H47.11ZM47.11 50.37V51.37H57.01V50.37V49.37H47.11V50.37ZM57.01 50.37H56.01V54.48H57.01H58.01V50.37H57.01ZM57.01 54.48V53.48H47.11V54.48V55.48H57.01V54.48ZM47.11 54.48H46.11V58.89H47.11H48.11V54.48H47.11ZM47.11 58.89V59.89H58.51V58.89V57.89H47.11V58.89ZM58.51 58.89H57.51V63H58.51H59.51V58.89H58.51ZM66.8177 63V64H67.8177V63H66.8177ZM61.9577 63H60.9577V64H61.9577V63ZM61.9577 58.2V57.2H60.9577V58.2H61.9577ZM66.8177 58.2H67.8177V57.2H66.8177V58.2ZM66.8177 63V62H61.9577V63V64H66.8177V63ZM61.9577 63H62.9577V58.2H61.9577H60.9577V63H61.9577ZM61.9577 58.2V59.2H66.8177V58.2V57.2H61.9577V58.2ZM66.8177 58.2H65.8177V63H66.8177H67.8177V58.2H66.8177Z"
+					fill="white" mask="url(#path-1-outside-1_1_7)" />
+				<mask id="path-3-outside-2_1_7" maskUnits="userSpaceOnUse" x="9" y="13" width="29" height="23"
+					fill="black">
+					<rect fill="white" x="9" y="13" width="29" height="23" />
+					<path
+						d="M28.67 35H23.27L18.77 28.28H15.14V35H10.52V14H20.12C25.07 14 28.04 16.61 28.04 20.93V20.99C28.04 24.38 26.21 26.51 23.54 27.5L28.67 35ZM23.36 21.23V21.17C23.36 19.19 21.98 18.17 19.73 18.17H15.14V24.2H19.82C22.07 24.2 23.36 23 23.36 21.23ZM36.3997 35H31.5397V30.2H36.3997V35Z" />
+				</mask>
+				<path
+					d="M28.67 35V36H30.5656L29.4954 34.4354L28.67 35ZM23.27 35L22.4391 35.5564L22.7361 36H23.27V35ZM18.77 28.28L19.6009 27.7236L19.3039 27.28H18.77V28.28ZM15.14 28.28V27.28H14.14V28.28H15.14ZM15.14 35V36H16.14V35H15.14ZM10.52 35H9.52V36H10.52V35ZM10.52 14V13H9.52V14H10.52ZM23.54 27.5L23.1923 26.5624L21.9916 27.0076L22.7146 28.0646L23.54 27.5ZM15.14 18.17V17.17H14.14V18.17H15.14ZM15.14 24.2H14.14V25.2H15.14V24.2ZM28.67 35V34H23.27V35V36H28.67V35ZM23.27 35L24.1009 34.4436L19.6009 27.7236L18.77 28.28L17.9391 28.8364L22.4391 35.5564L23.27 35ZM18.77 28.28V27.28H15.14V28.28V29.28H18.77V28.28ZM15.14 28.28H14.14V35H15.14H16.14V28.28H15.14ZM15.14 35V34H10.52V35V36H15.14V35ZM10.52 35H11.52V14H10.52H9.52V35H10.52ZM10.52 14V15H20.12V14V13H10.52V14ZM20.12 14V15C22.428 15 24.1481 15.608 25.2773 16.5972C26.3897 17.5717 27.04 19.0125 27.04 20.93H28.04H29.04C29.04 18.5275 28.2053 16.5033 26.5952 15.0928C25.0019 13.697 22.762 13 20.12 13V14ZM28.04 20.93H27.04V20.99H28.04H29.04V20.93H28.04ZM28.04 20.99H27.04C27.04 22.4971 26.6364 23.6643 25.9846 24.554C25.3289 25.4489 24.3779 26.1228 23.1923 26.5624L23.54 27.5L23.8877 28.4376C25.3721 27.8872 26.6711 27.0011 27.5979 25.736C28.5286 24.4657 29.04 22.8729 29.04 20.99H28.04ZM23.54 27.5L22.7146 28.0646L27.8446 35.5646L28.67 35L29.4954 34.4354L24.3654 26.9354L23.54 27.5ZM23.36 21.23H24.36V21.17H23.36H22.36V21.23H23.36ZM23.36 21.17H24.36C24.36 19.9271 23.914 18.8693 23.0146 18.1475C22.149 17.453 20.9882 17.17 19.73 17.17V18.17V19.17C20.7218 19.17 21.376 19.397 21.7629 19.7075C22.116 19.9907 22.36 20.4329 22.36 21.17H23.36ZM19.73 18.17V17.17H15.14V18.17V19.17H19.73V18.17ZM15.14 18.17H14.14V24.2H15.14H16.14V18.17H15.14ZM15.14 24.2V25.2H19.82V24.2V23.2H15.14V24.2ZM19.82 24.2V25.2C21.1155 25.2 22.2555 24.8538 23.0872 24.1357C23.9344 23.4043 24.36 22.3733 24.36 21.23H23.36H22.36C22.36 21.8567 22.1406 22.3107 21.7803 22.6218C21.4045 22.9462 20.7745 23.2 19.82 23.2V24.2ZM36.3997 35V36H37.3997V35H36.3997ZM31.5397 35H30.5397V36H31.5397V35ZM31.5397 30.2V29.2H30.5397V30.2H31.5397ZM36.3997 30.2H37.3997V29.2H36.3997V30.2ZM36.3997 35V34H31.5397V35V36H36.3997V35ZM31.5397 35H32.5397V30.2H31.5397H30.5397V35H31.5397ZM31.5397 30.2V31.2H36.3997V30.2V29.2H31.5397V30.2ZM36.3997 30.2H35.3997V35H36.3997H37.3997V30.2H36.3997Z"
+					fill="white" mask="url(#path-3-outside-2_1_7)" />
+				<path d="M55 0.5C65.7696 0.5 74.5 9.23045 74.5 20V74.5H20C9.23045 74.5 0.500001 65.7696 0.5 55V0.5H55Z"
+					stroke="#D9D9D9" />
+				<line x1="7.64079" y1="69.6522" x2="68.6408" y2="6.6522" stroke="white" />
+			</svg>
 
-			<h1>Hello</h1>
+
+			<h1>Chill, my portfolio is loading...</h1>
 		</div>
 	</div>
 	<div class="main-loaded-content" style="display: contents">%sveltekit.body%</div>
@@ -39,6 +57,36 @@
 
 </html>
 <script>
+
+	anime({
+		targets: '.logo-svg path',
+		strokeDashoffset: [anime.setDashoffset, 0],
+		easing: 'easeInOutSine',
+		duration: 2000,
+		delay: (el, i) => i * 200,
+		direction: 'alternate',
+		loop: true
+	});
+
+	anime({
+		targets: '.logo-svg line',
+		stroke: ['#ffffff', '#ff0000'],
+		strokeDashoffset: [anime.setDashoffset, 0],
+		easing: 'easeInOutQuad',
+		duration: 1500,
+		direction: 'alternate',
+		loop: true
+	});
+
+	anime({
+		targets: '.logo-svg',
+		scale: [0.8, 1],
+		easing: 'easeInOutSine',
+		duration: 4000,
+		loop: true,
+		direction: 'alternate'
+	});
+
 	if (location.hostname === 'localhost') {
 		window.__delayStart = new Promise((resolve) => {
 			setTimeout(resolve, 3000); // 3 second delay for testing
@@ -60,12 +108,29 @@
 		});
 	});
 
-	window.addEventListener("load", () => {
+	function hideLoader() {
 		const loader = document.querySelector('.static-loader');
+		if (loader) {
+			loader.style.transition = 'opacity 3s ease';
+			loader.style.opacity = '0';
+			anime({
+				targets: loader,
+				scale: [1, 300],
+				duration: 3000,
+				easing: 'easeInOutSine'
+			});
+			setTimeout(() => loader.remove(), 3000);
+		}
+	}
 
-		loader.style.transition = 'opacity 5s ease';
-		loader.style.opacity = '0';
-		setTimeout(() => loader.remove(), 5000);
+	window.addEventListener('DOMContentLoaded', () => {
+		const interval = setInterval(() => {
+			const homeSection = document.querySelector('.main');
+			if (homeSection) {
+				clearInterval(interval);
+				hideLoader();
+			}
+		}, 100);
 	});
 
 
@@ -89,21 +154,25 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 	}
 
 	.loading h1 {
 		font-family: 'Outfit', sans-serif;
-		font-size: clamp(7rem, 10vw, 10rem);
+		font-size: clamp(2rem, 4vw, 1rem);
 		color: white;
+		text-align: center;
+		margin: 0 !important;
 	}
 
-	.bars {
-		display: flex;
-		gap: 20px;
+	.logo-svg {
+		margin: 0 !important;
+		padding: 0 !important;
+		margin-bottom: 20px !important;
 	}
 
-	li {
-		display: block;
+	.static-loader li {
+		list-style: none;
 		height: 5vh;
 		width: 5vh;
 		border-radius: 50%;

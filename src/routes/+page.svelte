@@ -119,6 +119,22 @@
 			rightSelector: '.map .right',
 			targetSelector: '.map .left'
 		});
+
+		animate($headerObj, {
+			width: '100%',
+			marginTop: '0px',
+			borderRadius: '0px',
+			background: 'rgba(255, 255, 255, 0.1)',
+			backdropFilter: 'blur(10px)',
+			ease: 'easeInOutExpo',
+			autoplay: onScroll({
+				target: '.about',
+				enter: 'bottom top+=200',
+				leave: 'bottom top+=300',
+				sync: 0.5,
+				debug: true
+			})
+		});
 	}
 
 	function animateProjectBlock({ leftSelector, rightSelector, targetSelector }) {
@@ -1448,7 +1464,7 @@
 		</div>
 
 		<div class="contact-container">
-			<h1 class="email-header">This goes to email</h1>
+			<h1 class="email-header">The inputs below sends to my email directly!</h1>
 
 			<div class="send-container">
 				<div class="name-wrapper inputs-wrapper">
@@ -1865,26 +1881,28 @@
 	.embla {
 		overflow: hidden;
 		width: 100%;
-		margin: 0 auto;
-		border-radius: 10px;
 	}
 
 	.embla__container {
 		display: flex;
+		flex-wrap: nowrap;
 	}
 
 	.embla__slide {
 		box-sizing: border-box;
-		margin-right: 10px;
+		flex: 0 0 50%;
+		min-width: 0;
+		padding: 10px;
 	}
 
 	.embla__slide img {
-		width: auto;
+		width: 100%;
 		height: 300px;
 		object-fit: cover;
 		border-radius: 10px 0 10px 0;
 		background: linear-gradient(to right, #ffffff, #d8d2d1);
 		padding: 10px;
+		display: block;
 	}
 
 	.section-title-container {
@@ -2064,10 +2082,12 @@
 
 	.contact-container h1 {
 		color: #fffff0;
+		margin-bottom: 10px;
+		text-align: center;
 	}
 
 	.contact-container textarea {
-		width: 50vw;
+		width: 100%;
 		height: 100px;
 		resize: none;
 		background: #151515;
@@ -2269,6 +2289,20 @@
 	@media (max-width: 631px) {
 		svg {
 			display: none;
+		}
+	}
+
+	@media (max-width: 450px) {
+		.embla__slide {
+			flex: 0 0 100%;
+		}
+
+		.left {
+			width: 100% !important;
+			height: auto !important;
+		}
+		.project-holder {
+			gap: 30px;
 		}
 	}
 </style>
