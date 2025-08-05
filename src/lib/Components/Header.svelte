@@ -82,7 +82,7 @@
 		right: 50%;
 		left: 50%;
 		transform: translateX(-50%);
-		width: 20vw;
+		width: fit-content;
 		margin-top: 15px;
 		border-radius: 50px;
 		z-index: 100;
@@ -114,20 +114,5 @@
 		border: none;
 		width: 35px;
 		padding: 10px;
-	}
-
-	/* Media Queries */
-
-	@media (max-width: 767px) {
-		.header {
-			width: 40vw;
-			min-width: 20vw;
-		}
-	}
-
-	@media (max-width: 477px) {
-		.header {
-			width: 55vw;
-		}
 	}
 </style>
