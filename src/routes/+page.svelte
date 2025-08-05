@@ -582,7 +582,7 @@
 					enter: 'bottom top-=50',
 					leave: 'bottom top+=100',
 					sync: 'play',
-					debug: true,
+					debug: false,
 					onEnterForward: () => {
 						if (hasAnimated) return;
 						hasAnimated = true;

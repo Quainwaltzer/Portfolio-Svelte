@@ -128,7 +128,6 @@
 	@media (max-width: 477px) {
 		.header {
 			width: 55vw;
-			min-width: 55vw;
 		}
 	}
 </style>
