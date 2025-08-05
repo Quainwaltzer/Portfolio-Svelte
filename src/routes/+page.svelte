@@ -467,7 +467,7 @@
 				enter: 'bottom top+=200',
 				leave: 'bottom top+=300',
 				sync: 0.5,
-				debug: true,
+				debug: false,
 				onEnterForward: () => {
 					const labels = ['Home', 'About', 'Projects', 'Certifications', 'Contacts'];
 					const icons = ['fa-home', 'fa-question', 'fa-cog', 'fa-file', 'fa-phone'];
