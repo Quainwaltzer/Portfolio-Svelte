@@ -93,20 +93,6 @@
 		});
 	}
 
-	window.addEventListener('DOMContentLoaded', () => {
-		anime({
-			targets: '.bars li',
-			keyframes: [
-				{ translateY: 0, opacity: 1 },
-				{ translateY: -20, opacity: 0.7 },
-				{ translateY: 0, opacity: 1 }
-			],
-			duration: 1000,
-			easing: 'easeInOutSine',
-			delay: anime.stagger(100),
-			loop: true
-		});
-	});
 
 	function hideLoader() {
 		const loader = document.querySelector('.static-loader');
@@ -128,7 +114,10 @@
 			const homeSection = document.querySelector('.main');
 			if (homeSection) {
 				clearInterval(interval);
-				hideLoader();
+				setTimeout(() => {
+					hideLoader();
+				}, 2000);
+
 			}
 		}, 100);
 	});
