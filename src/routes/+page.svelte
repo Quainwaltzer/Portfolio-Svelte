@@ -990,7 +990,7 @@
 
 			<div class="right project-info">
 				<h1>Regional Analysis of Internet Connectivity, Literacy Rates, and Teenage Pregnancy</h1>
-				<h5>A Mobile Development (Android Studio) Project.</h5>
+				<h5>A Python Data Visualization School Project</h5>
 				<p>
 					This project explores the relationship between internet connectivity, literacy rates, and
 					teenage pregnancy across various regions in the Philippines. Using publicly available
@@ -1032,23 +1032,38 @@
 				<ul class="sololearn-list certi-list">
 					<li>
 						<p>C# Intermediate</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.sololearn.com/en/certificates/CC-IIYNEHMI')}>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>C++ Intermediate</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.sololearn.com/en/certificates/CC-AKCAHQKF')}>View Here &gt;</button
+						>
 					</li>
 					<li>
-						<p>Java Intermediate</p>
-						<button>View Here &gt;</button>
+						<p>Introduction to Java</p>
+						<button
+							on:click={(window.location.href =
+								'https://www.sololearn.com/en/certificates/CC-G9GEHZ0D')}>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Coding Foundations</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.sololearn.com/en/certificates/CC-5B5YELNB')}>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Web Development</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.sololearn.com/certificates/CC-FRTIAXVV')}>View Here &gt;</button
+						>
 					</li>
 				</ul>
 			</div>
@@ -1069,23 +1084,38 @@
 				<ul class="hackerrank-list certi-list">
 					<li>
 						<p>C# (Basic)</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.hackerrank.com/certificates/f2b3fb98d5e0')}>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Python (Basic)</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.hackerrank.com/certificates/6b001ddfb067')}>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Java (Basic)</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.hackerrank.com/certificates/19d2d26a673b')}>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Problem Solving (Basic)</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.hackerrank.com/certificates/879da98b6a32')}>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Software Engineer Intern Certification</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://www.hackerrank.com/certificates/4c8f13495a63')}>View Here &gt;</button
+						>
 					</li>
 				</ul>
 			</div>
@@ -1105,11 +1135,19 @@
 				<ul class="fcc-list certi-list">
 					<li>
 						<p>Foundational C# with Microsoft</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://freecodecamp.org/certification/Quainwaltzer/foundational-c-sharp-with-microsoft')}
+							>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Responsive Web Design</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://freecodecamp.org/certification/Quainwaltzer/responsive-web-design')}
+							>View Here &gt;</button
+						>
 					</li>
 				</ul>
 			</div>
@@ -1130,19 +1168,35 @@
 				<ul class="cc-list certi-list">
 					<li>
 						<p>SQL and Relational Databases 101</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://courses.cognitiveclass.ai/certificates/54f81c4472e14146ba9debf3bd4e558a')}
+							>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Data Visualization with Python</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://courses.cognitiveclass.ai/certificates/121bf1b17d27457abd9d2047834db315')}
+							>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Machine Learning with Python</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://courses.cognitiveclass.ai/certificates/692b6b7c5df1454d85a3e1b2b60654e9')}
+							>View Here &gt;</button
+						>
 					</li>
 					<li>
 						<p>Python 101 for Data Science</p>
-						<button>View Here &gt;</button>
+						<button
+							on:click={(window.location.href =
+								'https://courses.cognitiveclass.ai/certificates/4c20e40a7dbb4e0fbb7e154fdbd3fdd7')}
+							>View Here &gt;</button
+						>
 					</li>
 				</ul>
 			</div>
@@ -1161,12 +1215,20 @@
 
 					<ul class="gfg-list certi-list">
 						<li>
-							<p>Java (Basics)</p>
-							<button>View Here &gt;</button>
+							<p>Java Fundamentals</p>
+							<button
+								on:click={(window.location.href =
+									'https://media.geeksforgeeks.org/courses/certificates/b374579a33ad770375257d8ca10fd932.pdf')}
+								>View Here &gt;</button
+							>
 						</li>
 						<li>
-							<p>Python (Basics)</p>
-							<button>View Here &gt;</button>
+							<p>Python Fundamentals</p>
+							<button
+								on:click={(window.location.href =
+									'https://media.geeksforgeeks.org/courses/certificates/005a338c0e1f895f4229c91f48044562.pdf')}
+								>View Here &gt;</button
+							>
 						</li>
 					</ul>
 				</div>
@@ -1179,7 +1241,10 @@
 					<ul class="futurelearn-list certi-list">
 						<li>
 							<p>Digital Skills: Web Analytics</p>
-							<button>View Here &gt;</button>
+							<button
+								on:click={(window.location.href =
+									'https://www.futurelearn.com/certificates/6y5yxf7')}>View Here &gt;</button
+							>
 						</li>
 					</ul>
 				</div>
@@ -1192,7 +1257,11 @@
 					<ul class="saylor-list certi-list">
 						<li>
 							<p>Discrete Structures</p>
-							<button>View Here &gt;</button>
+							<button
+								on:click={(window.location.href =
+									'https://learn.saylor.org/pluginfile.php/1/tool_certificate/issues/1746266480/0050238102RE.pdf')}
+								>View Here &gt;</button
+							>
 						</li>
 					</ul>
 				</div>
@@ -1202,14 +1271,22 @@
 					<h1>Amazon Web Services</h1>
 					<div class="certi-line liners"></div>
 
-					<ul class="gfg-list certi-list">
+					<ul class="aws-list certi-list">
 						<li>
 							<p>Foundations of Prompt Engineering</p>
-							<button>View Here &gt;</button>
+							<button
+								on:click={(window.location.href =
+									'https://www.linkedin.com/in/rovieendigado/details/certifications/1746332511387/single-media-viewer/?profileId=ACoAAFGOJjoBgjQBpnhYeyHxAYwCtmsXCxb3Gfs')}
+								>View Here &gt;</button
+							>
 						</li>
 						<li>
 							<p>Cloud Security Essential for Executives</p>
-							<button>View Here &gt;</button>
+							<button
+								on:click={(window.location.href =
+									'https://www.linkedin.com/in/rovieendigado/details/certifications/1746462744730/single-media-viewer/?profileId=ACoAAFGOJjoBgjQBpnhYeyHxAYwCtmsXCxb3Gfs')}
+								>View Here &gt;</button
+							>
 						</li>
 					</ul>
 				</div>
@@ -1219,10 +1296,14 @@
 					<h1>The Open University</h1>
 					<div class="certi-line liners"></div>
 
-					<ul class="gfg-list certi-list">
+					<ul class="tou-list certi-list">
 						<li>
 							<p>An introduction to electronics</p>
-							<button>View Here &gt;</button>
+							<button
+								on:click={(window.location.href =
+									'https://www.open.edu/openlearn/blocks/ocwstatement/statement.php?id=4197&user=4425423&f=1')}
+								>View Here &gt;</button
+							>
 						</li>
 					</ul>
 				</div>
@@ -1232,10 +1313,14 @@
 					<h1>CodinGame</h1>
 					<div class="certi-line liners"></div>
 
-					<ul class="gfg-list certi-list">
+					<ul class="codingame-list certi-list">
 						<li>
 							<p>C# Problem Solving</p>
-							<button>View Here &gt;</button>
+							<button
+								on:click={(window.location.href =
+									'https://www.codingame.com/certification/D3jGsAX3FRpf_Z0JTTGeJQ')}
+								>View Here &gt;</button
+							>
 						</li>
 					</ul>
 				</div>
@@ -1245,14 +1330,22 @@
 					<h1>Kaggle</h1>
 					<div class="certi-line liners"></div>
 
-					<ul class="gfg-list certi-list">
+					<ul class="kaggle-list certi-list">
 						<li>
 							<p>Data Visualization</p>
-							<button>View Here &gt;</button>
+							<button
+								on:click={(window.location.href =
+									'https://www.kaggle.com/learn/certification/rovieendigado/data-visualization')}
+								>View Here &gt;</button
+							>
 						</li>
 						<li>
 							<p>Pandas</p>
-							<button>View Here &gt;</button>
+							<button
+								on:click={(window.location.href =
+									'https://www.kaggle.com/learn/certification/rovieendigado/pandas')}
+								>View Here &gt;</button
+							>
 						</li>
 					</ul>
 				</div>
@@ -1316,6 +1409,10 @@
 </div>
 
 <style>
+	button {
+		cursor: pointer !important;
+	}
+
 	.example {
 		display: block;
 		width: fit-content;
