@@ -719,7 +719,7 @@
 
 			<div class="image-position">
 				<div class="image-container">
-					<img src="/img/profile.png" alt="" />
+					<img src="/img/profile.jpg" alt="" />
 				</div>
 			</div>
 		</div>
